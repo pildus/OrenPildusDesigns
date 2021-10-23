@@ -12,7 +12,7 @@ namespace tempUtils.Model
         public string ProductName { get; set; }
         public float ProductPrice { get; set; }
 
-        public ProductType ProductType { get; set; }
+  //      public ProductType ProductType { get; set; }
 
         public void ProductDisplay()
         {
