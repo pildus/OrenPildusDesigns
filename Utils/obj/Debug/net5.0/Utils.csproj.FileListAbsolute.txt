@@ -1,0 +1,12 @@
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\bin\Debug\net5.0\Utils.deps.json
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\bin\Debug\net5.0\Utils.dll
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\bin\Debug\net5.0\ref\Utils.dll
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\bin\Debug\net5.0\Utils.pdb
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\Utils.csproj.AssemblyReference.cache
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\Utils.GeneratedMSBuildEditorConfig.editorconfig
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\Utils.AssemblyInfoInputs.cache
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\Utils.AssemblyInfo.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\Utils.csproj.CoreCompileInputs.cache
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\Utils.dll
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\ref\Utils.dll
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\Utils\obj\Debug\net5.0\Utils.pdb
