@@ -5,17 +5,28 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Net.Mail;
 
-
-namespace AnotherTemp.Utils
+namespace DataControl.Utils
 {
 
-    static class Constants
+    public static class EmailControl
     {
-        public const int _passMinLength = 8;
-        public const int _passMaxLength = 20;
-        public const string _specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
+        public static bool EmailValidation(string userEmail)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(userEmail);
+                return addr.Address == userEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
+
 
 
     public static class Password_Control
@@ -71,4 +82,14 @@ namespace AnotherTemp.Utils
             }
         }
     }
+
+    static class Constants
+    {
+        public const int _passMinLength = 8;
+        public const int _passMaxLength = 20;
+        public const string _specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
+    }
+
 }
+
+

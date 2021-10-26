@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnotherTemp.Model
+namespace DataControl.Model
 {
     public enum Product_Types
     {
@@ -13,9 +13,11 @@ namespace AnotherTemp.Model
 
     public enum Effect_Types
     {
-        Boost,Overdrive,Distortion,Chorus,Delay,Tremolo
+        Boost, Overdrive, Distortion, Chorus, Delay, Tremolo
     }
     class General
     {
     }
+
+
 }

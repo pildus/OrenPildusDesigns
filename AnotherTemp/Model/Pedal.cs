@@ -4,25 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnotherTemp.Model
+namespace DataControl.Model
 {
     public class Pedal : Product
     {
-
-        public Effect_Types PedalEffectType;
-
-        //public Pedal()
-        //{
-        //    ProductType = Product_Types.Pedal;
-        //}
-
-        //public override Product_Types ProductType { get;  }
-
-        //override public void Display()
-        //{
-        //    Console.WriteLine($"Type Of Product : {ProductType}");
-        //    Console.WriteLine("Pedal Display");
-        //}
-
+        public Effect_Types PedalEffectType { get; set; }
+        public string Pedal_Description { get; set; }
     }
 }

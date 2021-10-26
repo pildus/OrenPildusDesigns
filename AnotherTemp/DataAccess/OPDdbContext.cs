@@ -1,4 +1,4 @@
-﻿using AnotherTemp.Model;
+﻿using DataControl.Model;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,26 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AnotherTemp.DataAccess
+namespace DataControl.DataAccess
 {
-    class OPDdbContext
-    {
-    }
-}
 
-namespace CodeFirstDemo.DataAccess
-{
-    public class BlogDbContext : DbContext
+    public class OPDdbContext : DbContext
     {
-        //public DbSet<Post> Posts { get; set; }
-        //public DbSet<Fluent_Post> Fluent_Posts { get; set; }
-        //public DbSet<Comment> Comments { get; set; }
-        //public DbSet<Fluent_Comment> Fluent_Comments { get; set; }
-        //public DbSet<PostDetail> PostDetails { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Pedal> Pedals { get; set; }
         public DbSet<Board> Boards { get; set; }
+        public DbSet<InventoryItem> Inventory { get; set; }
+        public DbSet<Pedal> Pedals { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserPermission> UserPermissions { get; set; }
+        public DbSet<UserType> UserTypes { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -5804,9 +5804,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\לימודים\\קורס מורחב\\פרוייקט אמצע\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\AnotherTemp\\AnotherTemp.csproj",
-      "projectName": "AnotherTemp",
-      "projectPath": "H:\\לימודים\\קורס מורחב\\פרוייקט אמצע\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\AnotherTemp\\AnotherTemp.csproj",
+      "projectUniqueName": "H:\\לימודים\\קורס מורחב\\פרוייקט אמצע\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\AnotherTemp\\DataControl.csproj",
+      "projectName": "DataControl",
+      "projectPath": "H:\\לימודים\\קורס מורחב\\פרוייקט אמצע\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\AnotherTemp\\DataControl.csproj",
       "packagesPath": "C:\\Users\\ORENP\\.nuget\\packages\\",
       "outputPath": "H:\\לימודים\\קורס מורחב\\פרוייקט אמצע\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\OrenPildusDesigns\\AnotherTemp\\obj\\",
       "projectStyle": "PackageReference",
