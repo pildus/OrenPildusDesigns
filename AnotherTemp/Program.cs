@@ -16,36 +16,35 @@ namespace DataControl
     {
         static void Main(string[] args)
         {
-            User u = new User()
-            {
-                EmailAddress = "pildus@gmail.com",
-                FirstName = "Oren",
-                LastName = "Pildus",
-                Password = Password_Control.Encrypt_Password("AbCdE123"),
-                UserName = "pildus"
-            };
+            string err = "";
 
-            
+            PopulateDB.PopulateAll();
+            Console.WriteLine(err);
+            //var lst = ProductActions.GetProducts();
 
-            
+            //foreach (var item in lst)
+            //{
+            //    ProductActions.IdentifyProuct(item);
+            //    Console.WriteLine("*************************");
+            //}
 
-            using (var context = new OPDdbContext())
-            {
-                context.Add<User>(u);
-                context.SaveChanges();
-            }
+            //var lst = ProductActions.GetProducts(EffectTypes.Overdrive);
 
-            
-            //string pass = "Lev$iha2016!";
+            //foreach (var item in lst)
+            //{
+            //    ProductActions.IdentifyProuct(item);
+            //    Console.WriteLine("*************************");
+            //}
 
-            //bool p = Password_Control.Validate_Password_Params(pass);
-            //Console.WriteLine(p.ToString());
+            //lst = ProductActions.GetProducts(ProductTypes.Component);
 
-            //Console.WriteLine(Password_Control.Encrypt_Password(pass));
+            //foreach (var item in lst)
+            //{
+            //    ProductActions.IdentifyProuct(item);
+            //    Console.WriteLine("*************************");
+            //}
 
-            //Console.WriteLine(Password_Control.Encrypt_Password(pass)== Password_Control.Encrypt_Password("Lev$iha2016!"));
-
-
+            //Console.WriteLine(err);
         }
     }
 }

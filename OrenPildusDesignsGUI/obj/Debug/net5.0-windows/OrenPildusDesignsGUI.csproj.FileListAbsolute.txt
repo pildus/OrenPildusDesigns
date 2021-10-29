@@ -62,3 +62,7 @@ H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesignsGUI\bin\Debug\net5.0-windows\DataControl.dll
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesignsGUI\bin\Debug\net5.0-windows\DataControl.pdb
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesignsGUI\obj\Debug\net5.0-windows\OrenPildusDesignsGUI.csproj.CopyComplete
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesignsGUI\obj\Debug\net5.0-windows\StoreWindow.g.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesignsGUI\obj\Debug\net5.0-windows\StoreWindow.baml
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesignsGUI\obj\Debug\net5.0-windows\RegisterWindow.g.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesignsGUI\obj\Debug\net5.0-windows\RegisterWindow.baml

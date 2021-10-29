@@ -15,6 +15,7 @@ namespace DataControl.DataAccess
         public DbSet<Board> Boards { get; set; }
         public DbSet<InventoryItem> Inventory { get; set; }
         public DbSet<Pedal> Pedals { get; set; }
+        public DbSet<Component> Components { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
@@ -30,6 +31,17 @@ namespace DataControl.DataAccess
                 // .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
 
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<User>()
+                .HasIndex(u => u.EmailAddress)
+                .IsUnique();
+
+            builder.Entity<User>()
+            .Property("IsAdmin")
+            .HasDefaultValue(false);
         }
 
 

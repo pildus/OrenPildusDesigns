@@ -4,19 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataControl.Model
+using DataControl.Model;
+
+namespace DataControl.Utils
 {
-    public enum Product_Types
+    
+    public  enum ProductTypes
     {
         Pedal, Board, Kit, Component
     }
 
-    public enum Effect_Types
+    public enum EffectTypes
     {
-        Boost, Overdrive, Distortion, Chorus, Delay, Tremolo
+        Boost, Overdrive, Distortion, Chorus, Delay, Tremolo, Phaser,Misc
     }
-    class General
+
+    public enum ComponentTypes
     {
+        Resistor,Capacitor,PolCapacitor,IC,Potentiometer,LED,Diode
+    }
+    public class Constants
+    {
+        public static User SessionUser = new User();
+        public const int _passMinLength = 8;
+        public const int _passMaxLength = 20;
+        public const string _specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
     }
 
 

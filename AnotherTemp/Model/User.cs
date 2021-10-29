@@ -11,11 +11,25 @@ namespace DataControl.Model
 {
     public class User
     {
+        [Key]
         public int UserID { get; set; }
+        
+        [Required]
         public string UserName { get; set; }
+        
+        [Required]
         public string FirstName { get; set; }
+        
+        [Required]
         public string LastName { get; set; }
+        
+        [Required]
         public string  Password { get; set; }
+        
+        [Required]
         public string EmailAddress { get; set; }
+
+
+        public bool? IsAdmin  { get; set; }
     }
 }

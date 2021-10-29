@@ -2,7 +2,7 @@
 
 namespace DataControl.Migrations
 {
-    public partial class inv3 : Migration
+    public partial class inv : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,8 @@ namespace DataControl.Migrations
                     InventoryItemID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     InventoryItemProductID = table.Column<int>(type: "int", nullable: false),
-                    InventoryItemPrice = table.Column<float>(type: "real", nullable: false)
+                    InentoryItemQuantity = table.Column<int>(type: "int", nullable: false),
+                    InventoryItemSpecialPrice = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,14 +27,16 @@ namespace DataControl.Migrations
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductPrice = table.Column<float>(type: "real", nullable: false),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductPrice = table.Column<double>(type: "float", nullable: false),
+                    ProductType = table.Column<int>(type: "int", nullable: false),
+                    EffectType = table.Column<int>(type: "int", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BoardEffectType = table.Column<int>(type: "int", nullable: true),
-                    BoardWidth = table.Column<int>(type: "int", nullable: true),
-                    BoardHeight = table.Column<int>(type: "int", nullable: true),
-                    PedalEffectType = table.Column<int>(type: "int", nullable: true),
-                    Pedal_Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    BoardWidth = table.Column<double>(type: "float", nullable: true),
+                    BoardHeight = table.Column<double>(type: "float", nullable: true),
+                    ComponentType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    QuantityPerLot = table.Column<int>(type: "int", nullable: true),
+                    PedalDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,11 +63,12 @@ namespace DataControl.Migrations
                 {
                     UserID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsAdmin = table.Column<bool>(type: "bit", nullable: true, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -83,6 +87,12 @@ namespace DataControl.Migrations
                 {
                     table.PrimaryKey("PK_UserTypes", x => x.UserTypeID);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_EmailAddress",
+                table: "Users",
+                column: "EmailAddress",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

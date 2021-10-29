@@ -25,16 +25,50 @@ namespace OrenPildusDesignsGUI
         public MainWindow()
         {
             InitializeComponent();
+            this.Background = new ImageBrush(new BitmapImage(new Uri(@"H:\לימודים\קורס מורחב\פרוייקט אמצע\LoginBackground.jpg")));
+
+            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (!Password_Control.Validate_Password_Params(Text_Input.Password))
-                Text_Output.Text = "Pass No Good";
-            else
-                Text_Output.Text = Password_Control.Encrypt_Password(Text_Input.Password);
+            string err = "";
 
+            if (ValidationControl.Validate_Password_Params(Text_Password.Password) && ValidationControl.EmailValidation(Text_Email.Text))
+            {
+                var encPass = Text_Password.Password;
+                var userEmail = Text_Email.Text; 
+
+                 if (UserActions.UserLogin(userEmail, encPass,ref err))
+                {
+                    MessageBox.Show("Successfull Login");
+                    Window parentWindow = Window.GetWindow(this);
+                    parentWindow.Hide();
+                    StoreWindow store = new StoreWindow();
+                    store.ShowDialog();
+
+                    
+                }
+
+                else
+                    MessageBox.Show("Invalid Password / Email");
+            }
+
+            else
+                MessageBox.Show ("Invalid Password or Email");
+
+
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e) 
+        {
+            RegisterWindow RegWnd = new RegisterWindow();
+            this.Hide();
+            RegWnd.ShowDialog();
+        //{
+        //    RegisterW form2 = new Window2();
+        //    form2.Show();
         }
 
 

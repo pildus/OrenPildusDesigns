@@ -6,31 +6,38 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Net.Mail;
+using DataControl.Model;
+
 
 namespace DataControl.Utils
 {
-
-    public static class EmailControl
+    public class ValidationControl
     {
+        // Validation of emal address
         public static bool EmailValidation(string userEmail)
         {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(userEmail);
-                return addr.Address == userEmail;
-            }
-            catch
-            {
+            //if (userEmail.Trim().EndsWith("."))
+            //{
+            //    return false; // suggested by @TK-421
+            //}
+            //try
+            //{
+            //    var addr = new System.Net.Mail.MailAddress(userEmail);
+            //    return addr.Address == userEmail;
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(userEmail);
+            if (match.Success)
+                return true;
+            else
                 return false;
-            }
         }
+    
 
-    }
-
-
-
-    public static class Password_Control
-    {
         // Validation of password length, charachters(Uppercase , numeric, and symbol)
         public static bool Validate_Password_Params(string pass)
         {
@@ -44,8 +51,8 @@ namespace DataControl.Utils
                 !pass.Any(Char.IsLower) || //Validate at lease one lowercase char
                 !pass.Any(Char.IsDigit) || //Validate at lease one numeric char
                 pass.Any(Char.IsSeparator)) //Validate no spaces or line seperators
-                    return false;
-            
+                return false;
+
 
             //Validate at least one special charchter
             foreach (var c in Constants._specialChar)
@@ -59,7 +66,7 @@ namespace DataControl.Utils
             if (!_specFlag)
                 return false;
 
-            
+
             return true;
         }
 
@@ -82,14 +89,4 @@ namespace DataControl.Utils
             }
         }
     }
-
-    static class Constants
-    {
-        public const int _passMinLength = 8;
-        public const int _passMaxLength = 20;
-        public const string _specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
-    }
-
 }
-
-

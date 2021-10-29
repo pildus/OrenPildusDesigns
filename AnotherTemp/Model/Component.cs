@@ -9,12 +9,13 @@ using DataControl.Utils;
 
 namespace DataControl.Model
 {
-    public class Board : Product
+    public class Component : Product
     {
         [Required]
-            public double BoardWidth { get; set; }
+        public string ComponentType { get; set; }
 
         [Required]
-        public double BoardHeight { get; set; }
+        public int QuantityPerLot { get; set; }
+
     }
 }
