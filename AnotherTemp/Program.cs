@@ -16,17 +16,17 @@ namespace DataControl
     {
         static void Main(string[] args)
         {
-            string err = "";
+            //string err = "";
 
-            PopulateDB.PopulateAll();
-            Console.WriteLine(err);
-            //var lst = ProductActions.GetProducts();
+            //PopulateDB.PopulateAll();
+            //Console.WriteLine(err);
+            var lst = ProductActions.GetProducts();
 
-            //foreach (var item in lst)
-            //{
-            //    ProductActions.IdentifyProuct(item);
-            //    Console.WriteLine("*************************");
-            //}
+            foreach (var item in lst)
+            {
+                ProductActions.IdentifyProuct(item);
+                Console.WriteLine("*************************");
+            }
 
             //var lst = ProductActions.GetProducts(EffectTypes.Overdrive);
 

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataControl", "AnotherTemp\DataControl.csproj", "{871A1681-B1DF-4C7B-84F4-DA47F141D61C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPD_GUI", "OPD_GUI\OPD_GUI.csproj", "{1AB252BB-2D6B-4943-B56F-030AE37BA48A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{871A1681-B1DF-4C7B-84F4-DA47F141D61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{871A1681-B1DF-4C7B-84F4-DA47F141D61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{871A1681-B1DF-4C7B-84F4-DA47F141D61C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AB252BB-2D6B-4943-B56F-030AE37BA48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AB252BB-2D6B-4943-B56F-030AE37BA48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AB252BB-2D6B-4943-B56F-030AE37BA48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AB252BB-2D6B-4943-B56F-030AE37BA48A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
