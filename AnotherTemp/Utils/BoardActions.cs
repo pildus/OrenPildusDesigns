@@ -118,6 +118,7 @@ namespace DataControl.Utils
         }
 
 
+        //Method for Board display - To be changed when switching to WPF GUI
         public static void Display(int ProductID, ref string err)
         {
             using (var context = new OPDdbContext())

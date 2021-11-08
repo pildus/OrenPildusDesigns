@@ -18,39 +18,39 @@ namespace DataControl.Utils
         //Validate User input against the database info. - Success
         public static bool UserLogin(string email, string password, ref string err)
         {
-            using (var context = new OPDdbContext())
+            try //Verify if user exist in database according to the input mail address
             {
-                try //Verify if user exist in database according to the input mail address
+                using (var context = new OPDdbContext())
                 {
                     var user = context.Users
-                    .Single(b => b.EmailAddress == email);
+                 .Single(b => b.EmailAddress == email);
 
-                    if (user != null) // Found the user !
+                    var dbPass = user.Password; //Verify input encrypted password against database password
+
+                    if (dbPass == ValidationControl.Encrypt_Password(password))
                     {
-                        var dbPass = user.Password; //Verify input encrypted password against database password
+                        OrdersActions.PopulateShoppingCart(user, ref err);
 
-                        if (dbPass == ValidationControl.Encrypt_Password(password))
-                        {
-                            Constants.SessionUser = user; //Session user holds the user object for the entire solution
-                            err = "Login successfull";
-                            return true;
-                        }
-                        else
-                        {
-                            err = "Password not match";
-                            return false;
-                        }
+                        Constants.SessionUser = user; //Session user holds the user object for the entire solution
+                        
+                        err = "Login successfull";
+                        return true;
+                    }
+                    else
+                    {
+                        err = "Password not match";
+                        return false;
                     }
                 }
-                catch (Exception e) //no such user 
-                {
-                    err = "No such user in database";
-                    Console.WriteLine(e.Message);
-                }
             }
-
-            return false;
+            catch (Exception e) //no such user 
+            {
+                err = "No such user in database";
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
+
 
 
         //Signing Up new user to database
@@ -78,7 +78,8 @@ namespace DataControl.Utils
                                 FirstName = FirstName,
                                 LastName = LastName,
                                 Password = ValidationControl.Encrypt_Password(Password),
-                                UserName = UserName
+                                UserName = UserName,
+                                
                             };
 
                             if (IsAdmin)
@@ -166,6 +167,12 @@ namespace DataControl.Utils
 
 
 
+
+
+
+
+
+        #region privateValidationMethods
         // * Validating fields for signup
         private static bool ValidateFieldsForSignUp(string UserName,
         string FirstName,
@@ -195,7 +202,7 @@ namespace DataControl.Utils
                 return true;
         }
 
-
+        #endregion
     }
 
 }

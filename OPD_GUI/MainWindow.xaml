@@ -4,9 +4,115 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OPD_GUI"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        xmlns:u="clr-namespace:DataControl.Utils;assembly=DataControl"
+        xmlns:a="clr-namespace:DataControl.Model;assembly=DataControl"
+        mc:Ignorable="d" 
+        Title="Oren Pildus Designs" Height="800" Width="1280" 
+        FontSize="30" Background="#0f0f2D" Foreground="White" WindowStyle="None"
+        ResizeMode="NoResize" FontFamily="Bebas Neue" 
+        WindowStartupLocation="CenterScreen">
+
+    <!-- Main Grid Definitions-->
+    <Grid DockPanel.Dock="Top" HorizontalAlignment="Left" 
+          Name="grid1" ShowGridLines="false"  Width="1280" Background="#0f0f2d">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="White"></Setter>
+            </Style>
+            <Style TargetType="TabItem">
+                <Setter Property="Background" Value="#0f0f2d"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="FontSize" Value="30"></Setter>
+                <Setter Property="FontWeight" Value="Bold"></Setter>
+            </Style>
+            <Style TargetType="TabControl">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background" Value="#0f0f2d"></Setter>
+            </Style>
+        </Grid.Resources>
+
+        <!-- User Area-->
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"></ColumnDefinition>
+                <ColumnDefinition Width="800"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="Hello"  Name="lblHello"
+                   Grid.Column="0"/>
+            
+                <StackPanel  Name="EffectStackPanel" HorizontalAlignment="Center" 
+                  VerticalAlignment="Center"  Orientation="Horizontal" Grid.Column="1" >
+                </StackPanel>
+            
+            <StackPanel Grid.Column="2" Margin="0,5,0,0" >
+                <Image  Source="images/ShoppingCart.png" Width="40" Height="40"  />
+                <TextBlock Name="ShoppingCartCount" Text="(0)" FontSize="16"  
+                           Foreground="DarkOrange" HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+            <Label HorizontalAlignment="center" VerticalAlignment="Center" Name="ExitBtn"
+               MouseLeftButtonDown="ExitBtn_MouseLeftButtonDown" Cursor="Hand"
+                     Foreground="Red" Grid.Column="3">
+                Exit
+            </Label>
+
+        </Grid>
+
+
+        <!-- Products Tabs-->
+        <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                    Name="ProductStackPanel" TabStripPlacement="Left" 
+                    Margin="0, 0, 0, 10" SelectionChanged="OnSelectionChanged"
+                    Background="#0f0f2d">
+            <TabControl.Resources>
+                <Style TargetType="TabControl">
+                    <Setter Property="BorderBrush"  Value="#0f0f2d"></Setter>
+                </Style>
+                <Style TargetType="TabItem">
+                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                    <Setter Property="BorderThickness" Value="0"></Setter>
+                    <Setter Property="Background" Value="#0f0f2d"></Setter>
+                    <Setter Property="Cursor" Value="Hand"></Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                </Style>
+
+            </TabControl.Resources>
+        </TabControl>
+        <!--
+        <Border Grid.Column="1" Grid.Row="0" CornerRadius="35" Background="#0f0f2f" >
+            
+                <StackPanel>
+                    <Image  Source="images/ShoppingCart.png" Width="40" Height="40"  />
+                    <TextBlock Name="ShoppingCartCount" Text="(0)" FontSize="16"  
+                           Foreground="DarkOrange" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Border>-->
+
+
+
+
+        <!--
+            <StackPanel Name="ProductDisplayStackPanel" Orientation="Horizontal"
+                        Grid.Column="1" Grid.Row="1">
+                
+            </StackPanel>-->
 
     </Grid>
+
+
 </Window>

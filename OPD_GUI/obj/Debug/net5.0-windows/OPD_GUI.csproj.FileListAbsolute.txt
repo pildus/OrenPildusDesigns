@@ -66,3 +66,10 @@ H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\OPD_GUI.csproj.CopyComplete
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\SignupScreen.g.cs
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\SignupScreen.baml
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Debug\net5.0-windows\Humanizer.dll
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\PedalDisplay.g.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\PedalDisplay.baml
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\App.baml
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\BoardDisplay.g.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\BoardDisplay.baml

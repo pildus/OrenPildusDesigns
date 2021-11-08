@@ -18,8 +18,7 @@ namespace DataControl.DataAccess
         public DbSet<Component> Components { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserPermission> UserPermissions { get; set; }
-        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
 
 
@@ -42,6 +41,16 @@ namespace DataControl.DataAccess
             builder.Entity<User>()
             .Property("IsAdmin")
             .HasDefaultValue(false);
+
+            builder.Entity<Order>()
+           .HasOne<User>(s => s.User)
+           .WithMany(g => g.ShoppingCart);
+           
+
+            //builder.Entity<User>().HasMany(u => u.ShoppingCart);
+
+
+
         }
 
 

@@ -9,8 +9,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataControl.Model
 {
+    [Table("Pedals")]
     public class Pedal : Product
     {
         public string PedalDescription { get; set; }
+       
     }
 }

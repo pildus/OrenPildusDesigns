@@ -16,35 +16,27 @@ namespace DataControl
     {
         static void Main(string[] args)
         {
-            //string err = "";
-
             //PopulateDB.PopulateAll();
-            //Console.WriteLine(err);
-            var lst = ProductActions.GetProducts();
+            //Constants.SessionUser.IsAdmin = true;
+            string err = "";
+            UserActions.UserLogin("pildus@hotmail.com", "Leviha2016!",ref err);
 
-            foreach (var item in lst)
-            {
-                ProductActions.IdentifyProuct(item);
-                Console.WriteLine("*************************");
-            }
+            //OrdersActions.AddOrder(4, 5, 1, 600, ref err, false);
+            //OrdersActions.AddOrder(4, 3, 250, 0.90, ref err, false);
+            //OrdersActions.AddOrder(4, 2, 2, 110, ref err, false);
+            //OrdersActions.AddOrder(4, 4, 3, 110, ref err, false);
 
-            //var lst = ProductActions.GetProducts(EffectTypes.Overdrive);
-
-            //foreach (var item in lst)
-            //{
-            //    ProductActions.IdentifyProuct(item);
-            //    Console.WriteLine("*************************");
-            //}
-
-            //lst = ProductActions.GetProducts(ProductTypes.Component);
+            //var lst = OrdersActions.GetOrders();
 
             //foreach (var item in lst)
             //{
-            //    ProductActions.IdentifyProuct(item);
-            //    Console.WriteLine("*************************");
+            //    OrdersActions.DeleteOrder(item.cOrder,true,ref err);
             //}
 
-            //Console.WriteLine(err);
+
+
+
+
         }
     }
 }

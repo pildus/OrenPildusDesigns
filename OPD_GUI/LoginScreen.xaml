@@ -5,21 +5,104 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OPD_GUI"
         mc:Ignorable="d"
-        Title="Login" Height="350" Width="300" FontSize="12" Background="#04c582" WindowStartupLocation="CenterScreen">
-    
-    <Border Background="#2e3137" CornerRadius="20" Margin="20">
+        Title="Login" Height="550" Width="300" FontSize="12" Background="#04c582" WindowStartupLocation="CenterScreen">
+
+    <Border Background="#0f0f2D" CornerRadius="20" Margin="20">
         <StackPanel Margin="20">
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-            <Separator></Separator>
+            <Separator  ></Separator>
             <Label Content="Email" Foreground="White"/>
             <TextBox Name="txtEmail" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Label Content="Password" Foreground="White" FontSize="14" Margin="0"/>
             <PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Label HorizontalAlignment="Center" FontSize="10">
-                <Hyperlink Click="Hyperlink_Click">Sign Up</Hyperlink>
-            </Label>
-            
+            <TextBlock FontSize="8" Height="30" TextAlignment="Center" Margin="0,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="Password must be at leat 8 charachters, min 1 Uppercase [A-Z],min 1 number [0-9], min 1 symbol [~-?]" />
+
+            <Button Content="Login" 
+                    Foreground="White"
+                    FontSize="14"
+                    FontWeight="Bold" Margin="20"
+                    Width="106" HorizontalAlignment="Center" 
+                    RenderTransformOrigin="0.5,0.5" FontStyle="Normal" 
+                    FontStretch="Normal" Grid.Row="1" Click="btnSubmit_Click" Name="btnSubmit">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.171"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.08"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#04c582"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF048558"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="Auto" Height="25"
+                            CornerRadius="10"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+            <Separator  ></Separator>
+
+            <Button Content="Sign Up" 
+                    Foreground="White"
+                    FontSize="14"
+                    FontWeight="Bold" Margin="20"
+                    Width="106" HorizontalAlignment="Center" 
+                    RenderTransformOrigin="0.5,0.5" FontStyle="Normal" 
+                    FontStretch="Normal" Grid.Row="1" Click="btnSignup_Click" Name="btnSignUp">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.171"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.08"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#04c582"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF048558"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="Auto" Height="25"
+                            CornerRadius="10"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
         </StackPanel>
+        
     </Border>
 </Window>

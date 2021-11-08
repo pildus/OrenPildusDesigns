@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:OPD_GUI"
              StartupUri="LoginScreen.xaml">
     <Application.Resources>
-         
+        <Border x:Key="" Name="PedalView" CornerRadius="10" Width="220" Height="500" BorderThickness="1">
+            
+        </Border>
     </Application.Resources>
 </Application>

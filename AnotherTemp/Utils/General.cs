@@ -11,7 +11,8 @@ namespace DataControl.Utils
     
     public  enum ProductTypes
     {
-        Pedal, Board, Kit, Component
+        Pedal, Board, Component
+      
     }
 
     public enum EffectTypes

@@ -40,16 +40,52 @@ namespace DataControl.Migrations
                     b.ToTable("Inventory");
                 });
 
+            modelBuilder.Entity("DataControl.Model.Order", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("InventoryItemID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderInventoryItemID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("OrderIsConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<double>("OrderTotalAmount")
+                        .HasColumnType("float");
+
+                    b.Property<int>("OrderUserID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderID");
+
+                    b.HasIndex("InventoryItemID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("DataControl.Model.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EffectType")
                         .HasColumnType("int");
@@ -67,8 +103,6 @@ namespace DataControl.Migrations
                     b.HasKey("ProductId");
 
                     b.ToTable("Products");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Product");
                 });
 
             modelBuilder.Entity("DataControl.Model.User", b =>
@@ -111,39 +145,6 @@ namespace DataControl.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DataControl.Model.UserPermission", b =>
-                {
-                    b.Property<int>("UserPermissionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Enable")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserPermissionName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserPermissionID");
-
-                    b.ToTable("UserPermissions");
-                });
-
-            modelBuilder.Entity("DataControl.Model.UserType", b =>
-                {
-                    b.Property<int>("UserTypeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("UserTypeName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserTypeID");
-
-                    b.ToTable("UserTypes");
-                });
-
             modelBuilder.Entity("DataControl.Model.Board", b =>
                 {
                     b.HasBaseType("DataControl.Model.Product");
@@ -154,7 +155,7 @@ namespace DataControl.Migrations
                     b.Property<double>("BoardWidth")
                         .HasColumnType("float");
 
-                    b.HasDiscriminator().HasValue("Board");
+                    b.ToTable("Boards");
                 });
 
             modelBuilder.Entity("DataControl.Model.Component", b =>
@@ -168,7 +169,7 @@ namespace DataControl.Migrations
                     b.Property<int>("QuantityPerLot")
                         .HasColumnType("int");
 
-                    b.HasDiscriminator().HasValue("Component");
+                    b.ToTable("Components");
                 });
 
             modelBuilder.Entity("DataControl.Model.Pedal", b =>
@@ -178,7 +179,54 @@ namespace DataControl.Migrations
                     b.Property<string>("PedalDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Pedal");
+                    b.ToTable("Pedals");
+                });
+
+            modelBuilder.Entity("DataControl.Model.Order", b =>
+                {
+                    b.HasOne("DataControl.Model.InventoryItem", "InventoryItem")
+                        .WithMany()
+                        .HasForeignKey("InventoryItemID");
+
+                    b.HasOne("DataControl.Model.User", "User")
+                        .WithMany("ShoppingCart")
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("InventoryItem");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataControl.Model.Board", b =>
+                {
+                    b.HasOne("DataControl.Model.Product", null)
+                        .WithOne()
+                        .HasForeignKey("DataControl.Model.Board", "ProductId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataControl.Model.Component", b =>
+                {
+                    b.HasOne("DataControl.Model.Product", null)
+                        .WithOne()
+                        .HasForeignKey("DataControl.Model.Component", "ProductId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataControl.Model.Pedal", b =>
+                {
+                    b.HasOne("DataControl.Model.Product", null)
+                        .WithOne()
+                        .HasForeignKey("DataControl.Model.Pedal", "ProductId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DataControl.Model.User", b =>
+                {
+                    b.Navigation("ShoppingCart");
                 });
 #pragma warning restore 612, 618
         }

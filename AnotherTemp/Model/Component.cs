@@ -9,6 +9,7 @@ using DataControl.Utils;
 
 namespace DataControl.Model
 {
+    [Table("Components")]
     public class Component : Product
     {
         [Required]

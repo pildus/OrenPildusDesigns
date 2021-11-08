@@ -14,69 +14,104 @@ namespace DataControl.Utils
 {
     public static class InventoryItemActions
     {
-        public static bool AddInventoryItem(int ProductId,int Quantity,  ref string err, double SpecialPrice = 0)
+        //Adding inventory data for a specific product 
+        // ** only admin user permitted.
+        public static bool AddInventoryItem(int ProductId, int Quantity, ref string err, double SpecialPrice = 0)
         {
-            using (var context = new OPDdbContext())
-            {
-                var p = context.Products.Single(p => p.ProductId == ProductId);
-                
-                if (p != null)
-                {
-
-                    InventoryItem inv = new InventoryItem()
-                    {
-                        InventoryItemProductID = ProductId,
-                        InentoryItemQuantity = Quantity,
-                    };
-
-                    if (SpecialPrice > 0)
-                        inv.InventoryItemSpecialPrice = SpecialPrice;
-                    else
-                        inv.InventoryItemSpecialPrice = p.ProductPrice;
-
-                    context.Add<InventoryItem>(inv);
-                    context.SaveChanges();
-                    err = "Inventory Item Added Successfully";
-                    return true;
-                }
-                else
-                {
-                    err = ("No such Inventory Item");
-                    return false;
-                }
-            }
-        }
-
-
-        public static bool ChangeInventoryItemQuantityOrPrice(int InventoryItemID,  ref string err, double SpecialPrice = 0, int NewQuantity=0)
-        {
-            using (var context = new OPDdbContext())
+            if (Constants.SessionUser.IsAdmin == true)
             {
                 try
                 {
-                    var inv = context.Inventory.Single(p => p.InventoryItemID == InventoryItemID);
-                    
-
-                    if (inv != null)
+                    using (var context = new OPDdbContext())
                     {
-                        inv.InentoryItemQuantity += NewQuantity;
-                        inv.InventoryItemSpecialPrice = SpecialPrice;
+                        var p = context.Products.Single(p => p.ProductId == ProductId); // Verifying Product Id is legit
 
+                        InventoryItem inv = new InventoryItem()
+                        {
+                            InventoryItemProductID = ProductId,
+                            InentoryItemQuantity = Quantity,
+                        };
+
+                        if (SpecialPrice > 0)
+                            inv.InventoryItemSpecialPrice = SpecialPrice;
+                        else
+                            inv.InventoryItemSpecialPrice = p.ProductPrice;
+
+                        context.Add<InventoryItem>(inv);
                         context.SaveChanges();
-                        err = "Inventory Item Edited Successfully";
+                        err = "Inventory Item Added Successfully";
                         return true;
+                    }
+                }
+                catch
+                {
+                  err = "You have no permission to perform this";
+                return false;
+
+                }
+            }
+            else
+            {
+                err = "You have no permission to perform this";
+                return false;
+            }
+        }
+    
+
+        //Method to change product's inventory
+        // ** To be used for orders commited or returned.
+        public static bool ChangeInventoryItemQuantity(int InventoryItemID, ref string err,  int NewQuantity)
+        {
+            try
+            {
+
+                using (var context = new OPDdbContext())
+                {
+                    var inv = context.Inventory.Single(p => p.InventoryItemID == InventoryItemID);
+
+
+                    inv.InentoryItemQuantity += NewQuantity;
+
+                    context.SaveChanges();
+                    err = "Inventory Item Edited Successfully";
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                err = e.Message;
+                return false;
+            }
+        }
+
+        //Method to get the current inventory of a specific product
+        // ** to be used mainly to display current stock in the GUI
+        public static int GetProductInventoryStatus(int ProductId, ref string err)
+        {
+            try
+            {
+                using (var context = new OPDdbContext())
+                {
+                    var checkProduct = context.Inventory.Single(p => p.InventoryItemProductID == ProductId);
+
+                    if (checkProduct != null)
+                    {
+                        var cnt = context.Inventory.Where(p => p.InventoryItemProductID == ProductId).Sum(c => c.InentoryItemQuantity);
+                        return cnt;
                     }
                     else
                     {
-                        err = ("No such Invenoty item");
-                        return false;
+                        err = "No inventory exist for this product ID";
+                        return -100;
                     }
+
+                    
                 }
-                catch(Exception e)
-                {
-                    err = e.Message;
-                    return false;
-                }
+            }
+            catch (Exception e)
+            {
+                err = e.Message;
+                return -100;
             }
         }
     }

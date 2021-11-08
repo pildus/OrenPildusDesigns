@@ -29,7 +29,12 @@ namespace DataControl.Model
         [Required]
         public string EmailAddress { get; set; }
 
+        public bool? IsAdmin { get; set; } = false;
 
-        public bool? IsAdmin  { get; set; }
+
+
+        public virtual List<Order> ShoppingCart { get; set; } = new List<Order>();
+
+
     }
 }

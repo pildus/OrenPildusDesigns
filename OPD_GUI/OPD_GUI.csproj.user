@@ -13,6 +13,12 @@
     <Compile Update="SignupScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\BoardDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\PedalDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="LoginScreen.xaml">
@@ -22,6 +28,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SignupScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\BoardDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\PedalDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

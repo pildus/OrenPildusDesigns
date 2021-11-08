@@ -9,12 +9,16 @@ using DataControl.Utils;
 
 namespace DataControl.Model
 {
+
+    [Table("Boards")]
     public class Board : Product
     {
         [Required]
-            public double BoardWidth { get; set; }
+        public double BoardWidth { get; set; }
 
         [Required]
         public double BoardHeight { get; set; }
+
+      
     }
 }

@@ -34,6 +34,10 @@ namespace DataControl.Utils
             return false;
         }
 
+
+        // ** ** ** ** ** ** ** ** ** ** ** **
+        // ** Method overloads to get products data
+        // ** ** ** ** ** ** ** ** ** ** ** **
         public static List<Product> GetProducts()
         {
             try
@@ -48,15 +52,15 @@ namespace DataControl.Utils
             {
                 return null;
             }
-        }
+        }// Returns a list of all products available in Products table.
         public static List<Product> GetProducts(ProductTypes pt)
         {
             try
             {
                 using (var context = new OPDdbContext())
                 {
-                    List<Product> lst = (from p in context.Products 
-                                         where p.ProductType == pt 
+                    List<Product> lst = (from p in context.Products
+                                         where p.ProductType == pt
                                          select p).ToList();
                     return lst;
                 }
@@ -65,17 +69,16 @@ namespace DataControl.Utils
             {
                 return null;
             }
-            
-        }
 
-        public static Product GetProducts(int pID)
+        } // returns a list of all products of [Product Type]
+        public static List<Product> GetProducts(int pID)
         {
             try
             {
                 using (var context = new OPDdbContext())
                 {
-                    Product lst = context.Products.Single(p => p.ProductId == pID);
-                    return lst;
+                    var lst = context.Products.Single(p => p.ProductId == pID);
+                    return new List<Product>() { lst } ;
                 }
             }
             catch
@@ -83,9 +86,8 @@ namespace DataControl.Utils
                 return null;
             }
 
-        }
-
-        public static List<Product> GetProducts(int minId , int maxID)
+        } //return a Product object of a specific [ProductID]
+        public static List<Product> GetProducts(int minId, int maxID)
         {
             try
             {
@@ -102,8 +104,7 @@ namespace DataControl.Utils
                 return null;
             }
 
-        }
-
+        } //return a list of products from a range of [ProductID]
         public static List<Product> GetProducts(EffectTypes pt)
         {
             try
@@ -120,9 +121,11 @@ namespace DataControl.Utils
                 return null;
             }
 
-        }
+        } // Return a list of all products containig a specific [Effect Type]
 
-        public static void IdentifyProuct(Product prd)
+
+        // Methods to call the display method for ecah product type
+        public static void ProuctDisplay(Product prd)
         {
             string err = "";
 

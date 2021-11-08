@@ -48,17 +48,24 @@ namespace OPD_GUI
                 }
 
                 else
-                    MessageBox.Show("Invalid Password / Email");
+                {
+                    MessageBox.Show("Invalid Password / Email","Login Error",MessageBoxButton.OK );
+                }
             }
 
             else
                 MessageBox.Show("Invalid Password or Email");
         }
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        //private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        //{
+        //}
+
+        private void btnSignup_Click(object sender, RoutedEventArgs e)
         {
-            SignupScreen SignUp = new SignupScreen()  ;
+            SignupScreen SignUp = new SignupScreen();
             SignUp.Show();
             this.Close();
+
         }
     }
 }
