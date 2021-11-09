@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DataControl.Utils;
+
 
 namespace DataControl.Model
 {
@@ -30,8 +32,6 @@ namespace DataControl.Model
         public string EmailAddress { get; set; }
 
         public bool? IsAdmin { get; set; } = false;
-
-
 
         public virtual List<Order> ShoppingCart { get; set; } = new List<Order>();
 

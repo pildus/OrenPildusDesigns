@@ -10,7 +10,7 @@
         Title="Oren Pildus Designs" Height="800" Width="1280" 
         FontSize="30" Background="#0f0f2D" Foreground="White" WindowStyle="None"
         ResizeMode="NoResize" FontFamily="Bebas Neue" 
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" >
 
     <!-- Main Grid Definitions-->
     <Grid DockPanel.Dock="Top" HorizontalAlignment="Left" 
@@ -44,30 +44,54 @@
 
         <!-- User Area-->
         <Grid Grid.ColumnSpan="2">
+            <!-- Top Menu-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="280"></ColumnDefinition>
-                <ColumnDefinition Width="800"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+                <ColumnDefinition Width="920"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="Hello"  Name="lblHello"
+
+            <Label Name="lblHello" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Hello"  
                    Grid.Column="0"/>
             
-                <StackPanel  Name="EffectStackPanel" HorizontalAlignment="Center" 
-                  VerticalAlignment="Center"  Orientation="Horizontal" Grid.Column="1" >
-                </StackPanel>
-            
-            <StackPanel Grid.Column="2" Margin="0,5,0,0" >
+            <Image Width="40" Height="40" Source="/images/logout2.png" Grid.Column="0" 
+                   VerticalAlignment="Center" HorizontalAlignment="Right"
+                   MouseLeftButtonDown="LogoutBtn_MouseLeftButtonDown" Cursor="Hand" />
+
+            <StackPanel Name="ShoppingCartStackPanel" Grid.Column="1" Margin="0,5,0,0"  >
                 <Image  Source="images/ShoppingCart.png" Width="40" Height="40"  />
-                <TextBlock Name="ShoppingCartCount" Text="(0)" FontSize="16"  
-                           Foreground="DarkOrange" HorizontalAlignment="Center"/>
+                <TextBlock PreviewMouseLeftButtonDown="ShoppingCart_MouseLeftButtonDown" 
+                           Name="ShoppingCartCount" Text="(0)" FontSize="16" Cursor="Hand" 
+                           Foreground="DarkOrange" HorizontalAlignment="Center">
+                </TextBlock>
             </StackPanel>
             
-            <Label HorizontalAlignment="center" VerticalAlignment="Center" Name="ExitBtn"
+            <StackPanel Name="EffectStackPanel" 
+            HorizontalAlignment="Center"  VerticalAlignment="Center"  
+                        Orientation="Horizontal" Grid.Column="2" Margin="5,5,5,5" >
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Cursor" Value="Hand"></Setter>
+                        <Setter Property="Foreground" Value="White"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+            </StackPanel>
+
+        
+
+
+            <Image Width="40" Height="40" Source="/images/exit.png" Grid.Column="3" VerticalAlignment="Center"
+                   MouseLeftButtonDown="ExitBtn_MouseLeftButtonDown" Cursor="Hand" />
+
+
+
+
+            <!--            <Label HorizontalAlignment="center" VerticalAlignment="Center" Name="ExitBtn"
                MouseLeftButtonDown="ExitBtn_MouseLeftButtonDown" Cursor="Hand"
                      Foreground="Red" Grid.Column="3">
                 Exit
-            </Label>
+            </Label>-->
 
         </Grid>
 
@@ -75,8 +99,7 @@
         <!-- Products Tabs-->
         <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                     Name="ProductStackPanel" TabStripPlacement="Left" 
-                    Margin="0, 0, 0, 10" SelectionChanged="OnSelectionChanged"
-                    Background="#0f0f2d">
+                    Margin="0, 0, 0, 10" SelectionChanged="OnSelectionChanged" >
             <TabControl.Resources>
                 <Style TargetType="TabControl">
                     <Setter Property="BorderBrush"  Value="#0f0f2d"></Setter>
@@ -90,29 +113,9 @@
                 </Style>
 
             </TabControl.Resources>
+            <TabControl.Background>
+                <ImageBrush ImageSource="/Images/logo.png" Stretch="Uniform" TileMode="None"/>
+            </TabControl.Background>
         </TabControl>
-        <!--
-        <Border Grid.Column="1" Grid.Row="0" CornerRadius="35" Background="#0f0f2f" >
-            
-                <StackPanel>
-                    <Image  Source="images/ShoppingCart.png" Width="40" Height="40"  />
-                    <TextBlock Name="ShoppingCartCount" Text="(0)" FontSize="16"  
-                           Foreground="DarkOrange" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </StackPanel>
-
-        </Border>-->
-
-
-
-
-        <!--
-            <StackPanel Name="ProductDisplayStackPanel" Orientation="Horizontal"
-                        Grid.Column="1" Grid.Row="1">
-                
-            </StackPanel>-->
-
     </Grid>
-
-
 </Window>

@@ -4,13 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OPD_GUI.UserControls"
-              Width="180" Height="280"           Background="#0f0f2d" FontFamily="Bebas Neue" FontSize="20"
-             Foreground="White">
+      Width="220" Height="330" Background="#0f0f2d" FontFamily="Bebas Neue" FontSize="20"
+             Foreground="White" Margin="10,10,10,10">
+    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray">
         <StackPanel>
-            <Label Name="PedalTitle" Content="The Screaming Crow" 
+            <Label Name="PedalTitle" Content="Screaming Crow Pedal" 
                    Foreground="White" HorizontalAlignment="Center" ></Label>
-            <Image Name="PedalImage" Width="150" Height="180" Source="/images/Pedal/1.jpg"></Image>
+            <Label VerticalAlignment="top" Name="Availability" 
+                   HorizontalAlignment="Center" FontSize="14" Foreground="Gray" 
+                   Content="Currrently available : ">
+            </Label>
+            
+            <Image Name="PedalImage" Width="150" Height="180" Source="/images/Pedal/2.jpg"></Image>
+            
             <TextBlock HorizontalAlignment="Center" Name="PedalDescription">Some Description</TextBlock>
-            <Button Name="AddToSC" Content="Add To Shopping Cart"></Button>
+            
+            <TextBlock HorizontalAlignment="Center" Name="PedalPrice">10 NIS</TextBlock>
+
+            <Button Name="AddToSC" Content="Add To Shopping Cart" 
+                    Width="140" FontSize="16" Click="AddToSC_Click">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="DarkGoldenrod"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Label Visibility="Hidden" Name="PedalProductID" Content="0"></Label>
         </StackPanel>
+    </Border>
+    
 </UserControl>

@@ -13,20 +13,20 @@ using System.Net.Mail;
 
 namespace DataControl.Utils
 {
-    class OrdersActions
+    public static class OrdersActions
     {
-        public static bool AddOrder(int UserId, int InventoryItemID, int Quantity, double OrderPrice, ref string err, bool isConfirmed)
+        public static bool AddOrder(int UserId, int InventoryItemProductID, int Quantity, double OrderPrice, ref string err, bool isConfirmed)
         {
             try
             {
                 using (var context = new OPDdbContext())
                 {
-                    var inv = context.Inventory.Any(p => p.InventoryItemID == InventoryItemID);
+                    var inv = context.Inventory.Any(p => p.InventoryItemProductID == InventoryItemProductID);
 
                     Order ord = new Order
                     {
                         OrderDate = DateTime.Now,
-                        OrderInventoryItemID = InventoryItemID,
+                        OrderInventoryItemID = InventoryItemProductID,
                         OrderQuantity = Quantity,
                         OrderTotalAmount = Quantity * OrderPrice,
                         OrderUserID = UserId,
@@ -38,7 +38,7 @@ namespace DataControl.Utils
 
                     if (isConfirmed)
                     {
-                        InventoryItemActions.ChangeInventoryItemQuantity(InventoryItemID, ref err, -Quantity);
+                        InventoryItemActions.ChangeInventoryItemQuantity(InventoryItemProductID, ref err, -Quantity);
                         err = "Order place, Inventory updated";
                     }
                     else
@@ -119,7 +119,6 @@ namespace DataControl.Utils
                                    cUser = u,
                                    cinventoryItem = i
                                }).ToList();
-
                     return lst;
                 }
             }
@@ -248,7 +247,7 @@ namespace DataControl.Utils
             }
         }
 
-        public static bool ProcessShoppingCart()
+        public static bool ProcessShoppingCart(List<Order> lst)
         {
             string err = "";
 
@@ -256,7 +255,7 @@ namespace DataControl.Utils
             {
                 using (var context = new OPDdbContext())
                 {
-                    List<Order> lst = Constants.SessionUser.ShoppingCart;
+                    //List<Order> lst = Constants.SessionUser.ShoppingCart;
 
                     foreach (Order ord in lst)
                     {

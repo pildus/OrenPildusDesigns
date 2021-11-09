@@ -31,7 +31,7 @@ namespace DataControl.Utils
                             ProductName = productName,
                             ProductPrice = productPrice,
                             ProductType = ProductTypes.Component,
-                            ComponentType = ComponentType.ToString(),
+                            ComponentType = ComponentType,
                             QuantityPerLot = Quantity,
                             EffectType = effectType
                         };
@@ -80,7 +80,7 @@ namespace DataControl.Utils
                                 //updateUser.EmailAddress = EmailAddress;
                                 updateComponent.ProductName = ProductName;
                                 updateComponent.ProductPrice = ProductPrice;
-                                updateComponent.ComponentType = ComponentType.ToString();
+                                updateComponent.ComponentType = ComponentType;
                                 updateComponent.QuantityPerLot = Quantity;
 
 

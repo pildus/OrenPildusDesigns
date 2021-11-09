@@ -13,9 +13,6 @@ namespace DataControl.Model
     public class Component : Product
     {
         [Required]
-        public string ComponentType { get; set; }
-
-        [Required]
         public int QuantityPerLot { get; set; }
 
     }

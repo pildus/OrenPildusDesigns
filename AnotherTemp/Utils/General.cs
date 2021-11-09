@@ -17,12 +17,12 @@ namespace DataControl.Utils
 
     public enum EffectTypes
     {
-        Boost, Overdrive, Distortion, Chorus, Delay, Tremolo, Phaser,Misc
+        Boost, Overdrive, Distortion, Chorus, Delay, Tremolo, Phaser,Misc,Fuzz
     }
 
     public enum ComponentTypes
     {
-        Resistor,Capacitor,PolCapacitor,IC,Potentiometer,LED,Diode
+        Resistor,Capacitor,PolCapacitor,IC,Potentiometer,LED,Diode,Switch
     }
     public class Constants
     {

@@ -60,14 +60,14 @@ namespace DataControl.Utils
 
         //Method to change product's inventory
         // ** To be used for orders commited or returned.
-        public static bool ChangeInventoryItemQuantity(int InventoryItemID, ref string err,  int NewQuantity)
+        public static bool ChangeInventoryItemQuantity(int InventoryItemProductID, ref string err,  int NewQuantity)
         {
             try
             {
 
                 using (var context = new OPDdbContext())
                 {
-                    var inv = context.Inventory.Single(p => p.InventoryItemID == InventoryItemID);
+                    var inv = context.Inventory.Single(p => p.InventoryItemProductID == InventoryItemProductID);
 
 
                     inv.InentoryItemQuantity += NewQuantity;
@@ -86,7 +86,7 @@ namespace DataControl.Utils
 
         //Method to get the current inventory of a specific product
         // ** to be used mainly to display current stock in the GUI
-        public static int GetProductInventoryStatus(int ProductId, ref string err)
+        public static int GetProductInventoryStatus(int ProductId)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace DataControl.Utils
                     }
                     else
                     {
-                        err = "No inventory exist for this product ID";
+                       // err = "No inventory exist for this product ID";
                         return -100;
                     }
 
@@ -110,7 +110,7 @@ namespace DataControl.Utils
             }
             catch (Exception e)
             {
-                err = e.Message;
+                //err = e.Message;
                 return -100;
             }
         }

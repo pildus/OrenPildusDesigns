@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\App.xaml
-5-1901315889
+8-666723192
 
-91701036235
+12-1650887852
 215-110426678
-LoginScreen.xaml;MainWindow.xaml;SignupScreen.xaml;UserControls\BoardDisplay.xaml;UserControls\PedalDisplay.xaml;
+LoginScreen.xaml;MainWindow.xaml;ShoppingCart.xaml;SignupScreen.xaml;UserControls\HomePageContent.xaml;UserControls\MessageBoxWnd.xaml;UserControls\ProductDisplay.xaml;UserControls\ShoppingCartItem.xaml;
 
 True
 

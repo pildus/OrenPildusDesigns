@@ -37,6 +37,10 @@ namespace DataControl.DataAccess
             builder.Entity<User>()
                 .HasIndex(u => u.EmailAddress)
                 .IsUnique();
+            
+            builder.Entity<InventoryItem>()
+                .HasIndex(i => i.InventoryItemProductID)
+                .IsUnique();
 
             builder.Entity<User>()
             .Property("IsAdmin")

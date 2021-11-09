@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using OPD_GUI.UserControls;
 using DataControl.DataAccess;
 using DataControl.Utils;
 
@@ -38,10 +38,11 @@ namespace OPD_GUI
 
                 if (UserActions.UserLogin(userEmail, encPass, ref err))
                 {
-                    MessageBox.Show("Successfull Login");
+                    MessageBoxWnd msgWnd = new MessageBoxWnd("Login Successfull !\nWelcome To Oren Pildus Designs");
+                    msgWnd.ShowDialog();
 
-                    MainWindow store = new MainWindow();
-                    store.Show();
+                    MainWindow mainWnd = new MainWindow();
+                    mainWnd.Show();
                     this.Close();
 
 

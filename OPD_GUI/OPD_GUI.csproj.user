@@ -10,13 +10,22 @@
     <Compile Update="LoginScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ShoppingCart.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SignupScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\BoardDisplay.xaml.cs">
+    <Compile Update="UserControls\HomePageContent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\PedalDisplay.xaml.cs">
+    <Compile Update="UserControls\MessageBoxWnd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\ProductDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\ShoppingCartItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,13 +36,22 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ShoppingCart.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SignupScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\BoardDisplay.xaml">
+    <Page Update="UserControls\HomePageContent.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\PedalDisplay.xaml">
+    <Page Update="UserControls\MessageBoxWnd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\ProductDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\ShoppingCartItem.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

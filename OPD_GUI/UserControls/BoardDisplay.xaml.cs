@@ -29,11 +29,14 @@ namespace OPD_GUI.UserControls
         //}
         public BoardDisplay(Product prd)
         {
+            char c = '₪';
             InitializeComponent();
             Board PdlPrd = (Board)prd;
             BoardTitle.Content = PdlPrd.ProductName;
+            Availability.Content = "Currently Available : " + InventoryItemActions.GetProductInventoryStatus(PdlPrd.ProductId).ToString();
             BoardImage.Source = new BitmapImage(new Uri("/images/Products/" + PdlPrd.ProductId + ".jpg", UriKind.Relative));
             BoardDescription.Text =  "Dimension : " + PdlPrd.BoardWidth + " X " + PdlPrd.BoardHeight;
+            BoardPrice.Text = PdlPrd.ProductPrice.ToString() + c.ToString();
         }
 
     }

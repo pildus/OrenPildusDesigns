@@ -37,6 +37,9 @@ namespace DataControl.Migrations
 
                     b.HasKey("InventoryItemID");
 
+                    b.HasIndex("InventoryItemProductID")
+                        .IsUnique();
+
                     b.ToTable("Inventory");
                 });
 
@@ -86,6 +89,9 @@ namespace DataControl.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ComponentType")
+                        .HasColumnType("int");
 
                     b.Property<int>("EffectType")
                         .HasColumnType("int");
@@ -161,10 +167,6 @@ namespace DataControl.Migrations
             modelBuilder.Entity("DataControl.Model.Component", b =>
                 {
                     b.HasBaseType("DataControl.Model.Product");
-
-                    b.Property<string>("ComponentType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuantityPerLot")
                         .HasColumnType("int");

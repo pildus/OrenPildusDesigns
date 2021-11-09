@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataControl.Migrations
 {
     [DbContext(typeof(OPDdbContext))]
-    [Migration("20211105202228_05112021")]
-    partial class _05112021
+    [Migration("20211109115646_09112021")]
+    partial class _09112021
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,9 @@ namespace DataControl.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("InventoryItemID");
+
+                    b.HasIndex("InventoryItemProductID")
+                        .IsUnique();
 
                     b.ToTable("Inventory");
                 });
@@ -88,6 +91,9 @@ namespace DataControl.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ComponentType")
+                        .HasColumnType("int");
 
                     b.Property<int>("EffectType")
                         .HasColumnType("int");
@@ -163,10 +169,6 @@ namespace DataControl.Migrations
             modelBuilder.Entity("DataControl.Model.Component", b =>
                 {
                     b.HasBaseType("DataControl.Model.Product");
-
-                    b.Property<string>("ComponentType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuantityPerLot")
                         .HasColumnType("int");

@@ -16,26 +16,10 @@ namespace DataControl
     {
         static void Main(string[] args)
         {
-            //PopulateDB.PopulateAll();
-            //Constants.SessionUser.IsAdmin = true;
-            string err = "";
-            UserActions.UserLogin("pildus@hotmail.com", "Leviha2016!",ref err);
-
-            //OrdersActions.AddOrder(4, 5, 1, 600, ref err, false);
-            //OrdersActions.AddOrder(4, 3, 250, 0.90, ref err, false);
-            //OrdersActions.AddOrder(4, 2, 2, 110, ref err, false);
-            //OrdersActions.AddOrder(4, 4, 3, 110, ref err, false);
-
-            //var lst = OrdersActions.GetOrders();
-
-            //foreach (var item in lst)
-            //{
-            //    OrdersActions.DeleteOrder(item.cOrder,true,ref err);
-            //}
-
-
-
-
+            // PopulateDB.PopulateAll();
+            //string err = "";
+           // UserActions.UserLogin("pildus@hotmail.com", "Leviha2016!", ref err);
+           
 
         }
     }

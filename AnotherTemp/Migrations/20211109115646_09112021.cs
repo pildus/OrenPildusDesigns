@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataControl.Migrations
 {
-    public partial class _05112021 : Migration
+    public partial class _09112021 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,8 @@ namespace DataControl.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductPrice = table.Column<double>(type: "float", nullable: false),
                     ProductType = table.Column<int>(type: "int", nullable: false),
-                    EffectType = table.Column<int>(type: "int", nullable: false)
+                    EffectType = table.Column<int>(type: "int", nullable: false),
+                    ComponentType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -80,7 +81,6 @@ namespace DataControl.Migrations
                 columns: table => new
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    ComponentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuantityPerLot = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -143,6 +143,12 @@ namespace DataControl.Migrations
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Inventory_InventoryItemProductID",
+                table: "Inventory",
+                column: "InventoryItemProductID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_InventoryItemID",

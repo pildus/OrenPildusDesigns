@@ -29,12 +29,31 @@ namespace OPD_GUI.UserControls
         //}
         public PedalDisplay(Product prd)
         {
+            char c = '₪';
             InitializeComponent();
             Pedal PdlPrd = (Pedal)prd;
             PedalTitle.Content = PdlPrd.ProductName;
+            Availability.Content = "Currently Available : " + InventoryItemActions.GetProductInventoryStatus(PdlPrd.ProductId).ToString();
             PedalImage.Source = new BitmapImage(new Uri("/images/Products/" + PdlPrd.ProductId + ".jpg", UriKind.Relative));
             PedalDescription.Text = PdlPrd.PedalDescription;
+            PedalPrice.Text = PdlPrd.ProductPrice.ToString() + c.ToString();
+            PedalProductID.Content = PdlPrd.ProductId;
+
         }
 
+        private void AddToSC_Click(object sender, RoutedEventArgs e)
+        {
+            string s = "";
+            int ProductID = int.Parse(PedalProductID.Content.ToString());
+            Product p = ProductActions.GetProducts(ProductID);
+
+            if (OrdersActions.AddOrder(Constants.SessionUser.UserID, p.ProductId, 1, p.ProductPrice, ref s, false))
+            {
+                MessageBox.Show("Successfully added to Shopping Cart");
+                MainWindow win = (MainWindow)Window.GetWindow(this);
+                win.RefreshShoppingCartCount();
+            }
+            
+        }
     }
 }
