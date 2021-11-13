@@ -5,14 +5,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OPD_GUI.UserControls"
-      Width="220" Height="330" Background="#0f0f2d" FontFamily="Bebas Neue" FontSize="20"
+      Width="220" Height="330"  FontFamily="Bebas Neue" FontSize="20"
              Foreground="White" Margin="10,10,10,10">
-    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Gray">
+    <Border CornerRadius="10" BorderThickness="2" BorderBrush="Black" Background="#6d6b89" Opacity="0.92">
         <StackPanel>
             <Label Name="ProductTitle" Content="Screaming Crow Product" 
                    Foreground="White" HorizontalAlignment="Center" ></Label>
             <Label VerticalAlignment="top" Name="Availability" 
-                   HorizontalAlignment="Center" FontSize="14" Foreground="Gray" 
+                   HorizontalAlignment="Center" FontSize="14" Foreground="DarkGray" 
                    Content="Currrently available : ">
             </Label>
 

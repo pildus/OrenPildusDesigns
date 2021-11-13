@@ -261,7 +261,7 @@ namespace DataControl.Utils
                     {
                         InventoryItemActions.ChangeInventoryItemQuantity(ord.OrderInventoryItemID, ref err, 0 - ord.OrderQuantity);
                         ord.OrderIsConfirmed = true;
-                        context.Update(Constants.SessionUser);
+                        context.Update(ord);
                         context.SaveChanges();
                     }
 
@@ -329,6 +329,40 @@ namespace DataControl.Utils
             }
         }
 
+        public static bool DeleteOrder(int OrderId, bool IsReturnedAndRefund, ref string err)
+        {
+            try
+            {
+                using (var context = new OPDdbContext())
+                {
+                    Order ord = context.Orders.Single(o => o.OrderID == OrderId);
+
+                    if (ord.OrderIsConfirmed == true && IsReturnedAndRefund == true && Constants.SessionUser.IsAdmin == true)
+                    {
+                        InventoryItemActions.ChangeInventoryItemQuantity(ord.OrderInventoryItemID, ref err, ord.OrderQuantity);
+                        context.Remove(ord);
+                        context.SaveChanges();
+                        err = "Order deleted successfully from database, inventory updated";
+                        return true;
+                    }
+                    else if (ord.OrderIsConfirmed == false)
+                    {
+                        context.Remove(ord);
+                        context.SaveChanges();
+                        err = "Order deleted successfully from Shopping cart";
+                        return true;
+                    }
+
+                    err = "Order can't be deleted - No user permission";
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                err = e.Message;
+                return false;
+            }
+        }
     }
 
     public class ComplexOrder

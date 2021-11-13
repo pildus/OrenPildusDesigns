@@ -116,6 +116,30 @@ namespace DataControl.Utils
             }
 
         } //return a Product object of a specific [ProductID]
+
+        public static Product GetProducts(Order ord)
+        {
+            try
+            {
+                using (var context = new OPDdbContext())
+                {
+                    var lst = (from p in context.Products
+                              from i in context.Inventory
+                              from o in context.Orders
+                              where i.InventoryItemProductID == p.ProductId && o.OrderInventoryItemID == i.InventoryItemID
+                              && ord.OrderID == o.OrderID
+                              select p).Single();
+                    //return new List<Product>() { lst } ;
+                    return lst;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+        } //return a Product object of a specific [ProductID]
+
         public static List<Product> GetProducts(int minId, int maxID)
         {
             try

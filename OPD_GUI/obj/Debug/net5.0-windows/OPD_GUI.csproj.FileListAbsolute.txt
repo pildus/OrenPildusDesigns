@@ -79,3 +79,9 @@ H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\MessageBoxWnd.baml
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\ShoppingCartItem.g.cs
 H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\ShoppingCartItem.baml
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\MyAccount.g.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\MyAccount.baml
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\AdminZone.g.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\AdminZone.baml
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\AdminProductControl.g.cs
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\obj\Debug\net5.0-windows\UserControls\AdminProductControl.baml

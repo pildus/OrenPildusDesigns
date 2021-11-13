@@ -26,12 +26,18 @@
   <ItemGroup>
     <None Remove="Fonts\Arc.ttf" />
     <None Remove="Fonts\Bebas.ttf" />
+    <None Remove="Images\adminbackground.jpg" />
     <None Remove="Images\background.jpg" />
+    <None Remove="Images\board.png" />
+    <None Remove="Images\component.png" />
     <None Remove="Images\delete.png" />
     <None Remove="Images\exit.png" />
     <None Remove="Images\home.png" />
     <None Remove="Images\logo.png" />
+    <None Remove="Images\logo2.png" />
     <None Remove="Images\logout2.png" />
+    <None Remove="Images\mainbackground.jpg" />
+    <None Remove="Images\pedal.png" />
     <None Remove="Images\Products\1.jpg" />
     <None Remove="Images\Products\10.jpg" />
     <None Remove="Images\Products\11.jpg" />
@@ -75,7 +81,16 @@
   <ItemGroup>
     <Resource Include="Fonts\Arc.ttf" />
     <Resource Include="Fonts\Bebas.ttf" />
+    <Resource Include="Images\adminbackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\board.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\component.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\delete.png">
@@ -88,9 +103,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\logo2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\logout2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\mainbackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\pedal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Products\1.jpg">
@@ -150,10 +174,6 @@
     <Resource Include="Images\ShoppingCart.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using OPD_GUI;
 using DataControl.Model;
 using DataControl.Utils;
+using System.Windows.Media.Animation;
 
 namespace OPD_GUI.UserControls
 {
@@ -23,14 +24,20 @@ namespace OPD_GUI.UserControls
     /// </summary>
     public partial class ProductDisplay : UserControl
     {
-        //public ProductDisplay()
-        //{
-        //    InitializeComponent();
-        //}
-        public ProductDisplay(Product prd)
+        private Storyboard myStoryboard;
+        private ProductDisplay Pdis;
+
+        public ProductDisplay(Product prd, bool animated = false)
         {
-            char c = '₪';
             InitializeComponent();
+            Pdis = this;
+            Pdis.Name = $"ProductDisplay{prd.ProductId}";
+            Pdis.RegisterName(Pdis.Name, Pdis);
+
+            char c = '₪';
+
+
+
             Product PdlPrd = (Product)prd;
             ProductTitle.Content = PdlPrd.ProductName;
             Availability.Content = "Currently Available : " + InventoryItemActions.GetProductInventoryStatus(PdlPrd.ProductId).ToString();
@@ -56,8 +63,29 @@ namespace OPD_GUI.UserControls
                     break;
             }
 
-        }
+            if (animated)
+            {
+                DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+                myDoubleAnimation.From = 1.0;
+                myDoubleAnimation.To = 0.0;
+                myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(5));
+                myDoubleAnimation.AutoReverse = true;
+                myDoubleAnimation.RepeatBehavior = RepeatBehavior.Forever;
 
+
+                myStoryboard = new Storyboard();
+                myStoryboard.Children.Add(myDoubleAnimation);
+                Storyboard.SetTargetName(myDoubleAnimation, Pdis.Name);
+                Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Rectangle.OpacityProperty));
+
+                Pdis.Loaded += new RoutedEventHandler(Pdis_Loaded);
+            }
+
+        }
+        private void Pdis_Loaded(object sender, RoutedEventArgs e)
+        {
+            myStoryboard.Begin(this);
+        }
         private void AddToSC_Click(object sender, RoutedEventArgs e)
         {
             string s = "";
@@ -70,7 +98,9 @@ namespace OPD_GUI.UserControls
                 msgWnd.ShowDialog();
 
                 MainWindow win = (MainWindow)Window.GetWindow(this);
+
                 win.RefreshShoppingCartCount();
+                win.ProductStackPanel.Items.Refresh();
             }
 
         }

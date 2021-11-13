@@ -28,7 +28,10 @@ namespace OPD_GUI
     {
         public MainWindow()
         {
+            string err = "";
             InitializeComponent();
+           // UserActions.UserLogin("pildus@gmail.com", "Leviha2016!", ref err);
+            Application.Current.MainWindow = this;
 
             //Setting welcome user name and shopping cart items.
             lblHello.Content = "Hello " + Constants.SessionUser.FirstName;
@@ -55,8 +58,9 @@ namespace OPD_GUI
             TabItem prdTab = new TabItem();
 
             prdTab.Name = "Home";
-            prdTab.Header = "Home";
-            prdTab.Content = new HomePageContent();
+            //prdTab.Header = "Home";
+            prdTab.Header = new Image() { Source = new BitmapImage(new Uri("/images/home.png", UriKind.Relative)) };
+            prdTab.Content = new HomePageContent(4);
             ProductStackPanel.Items.Add(prdTab);
 
 
@@ -78,7 +82,8 @@ namespace OPD_GUI
 
                 prdTab = new TabItem();
                 prdTab.Name = item.ToString();
-                prdTab.Header = item.ToString() + "s";
+                prdTab.Header = new Image() { Source = new BitmapImage(new Uri($"/images/{item.ToString().ToLower()}.png", UriKind.Relative)) }; 
+                //prdTab.Header = item.ToString() + "s";
                 prdTab.Content = scrl;
                 ProductStackPanel.Items.Add(prdTab);
             }
@@ -86,6 +91,7 @@ namespace OPD_GUI
             prdTab = new TabItem();
             prdTab.Name = "MyAccount";
             prdTab.Header = "My Account";
+            prdTab.Content = new MyAccount();
             ProductStackPanel.Items.Add(prdTab);
 
             // Creating Admin Zone tab - Available to admins only
@@ -94,6 +100,7 @@ namespace OPD_GUI
                 prdTab = new TabItem();
                 prdTab.Name = "Admin";
                 prdTab.Header = "Admin Zone";
+                prdTab.Content = new AdminZone();
                 ProductStackPanel.Items.Add(prdTab);
             }
             #endregion
@@ -131,31 +138,7 @@ namespace OPD_GUI
                 Grid.SetRow(pd, row);
                 Grid.SetColumn(pd, col);
                 myGrid.Children.Add(pd);
-                
-                //switch (p.ProductType)
-                //{
-                //    case ProductTypes.Pedal:
-                //        PedalDisplay pd = new PedalDisplay(p);
-                //        Grid.SetRow(pd, row);
-                //        Grid.SetColumn(pd, col);
-                //        myGrid.Children.Add(pd);
-                //        break;
-                //    case ProductTypes.Board:
-                //        BoardDisplay bd = new BoardDisplay(p);
-                //        Grid.SetRow(bd, row);
-                //        Grid.SetColumn(bd, col);
-                //        myGrid.Children.Add(bd);
-                //        break;
-                //    case ProductTypes.Component:
-                //        ComponentDisplay cd = new ComponentDisplay(p);
-                //        Grid.SetRow(cd, row);
-                //        Grid.SetColumn(cd, col);
-                //        myGrid.Children.Add(cd);
-                //        break;
-                //    default:
 
-                //        break;
-                //}
 
                 if (col == count)
                 {
@@ -177,13 +160,14 @@ namespace OPD_GUI
         private void ExitBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
-        }       
+        }
         private void LogoutBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MessageBoxWnd msgWnd = new MessageBoxWnd("Logging Off\nHope you had a great time\nCome again soon !");
             msgWnd.ShowDialog();
 
-            
+            Constants.SessionUser = new User();
+
             LoginScreen logScr = new LoginScreen();
             logScr.Show();
             this.Close();
@@ -326,12 +310,13 @@ namespace OPD_GUI
         private void ShoppingCart_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ShoppingCart SCWnd = new ShoppingCart();
+            SCWnd.Owner = this;
             SCWnd.ShowDialog();
-            
+
         }
 
-        
-    } 
+
+    }
 }
 
 

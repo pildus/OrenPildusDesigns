@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataControl.Utils;
 using DataControl.Model;
+using DataControl.DataAccess;
 
 
 namespace OPD_GUI.UserControls
@@ -23,16 +24,44 @@ namespace OPD_GUI.UserControls
     /// </summary>
     public partial class ShoppingCartItem : UserControl
     {
-        public ShoppingCartItem(ComplexOrder co)
+        public ShoppingCartItem(Order o)
         {
             char c = '₪';
             InitializeComponent();
+            Product p = ProductActions.GetProducts(o);
 
-            ProductImage.Source = new BitmapImage(new Uri("/images/Products/" + co.cProduct.ProductId + ".jpg", UriKind.Relative));
-            ProductName.Text = co.cProduct.ProductName;
-            ProductPrice.Text = co.cProduct.ProductPrice + c.ToString();
-            OrderQuantity.Text = co.cOrder.OrderQuantity.ToString();
-            OrderTotalAmount.Text = (co.cProduct.ProductPrice * co.cOrder.OrderQuantity).ToString() + c.ToString();
+            ProductImage.Tag = o.OrderID.ToString();
+            ProductImage.Source = new BitmapImage(new Uri("/images/Products/" + p.ProductId + ".jpg", UriKind.Relative));
+            ProductName.Text = p.ProductName;
+            ProductPrice.Text = p.ProductPrice.ToString() + c.ToString();
+            OrderQuantity.Text = o.OrderQuantity.ToString();
+            OrderTotalAmount.Text = (p.ProductPrice * o.OrderQuantity).ToString() + c.ToString();
+        }
+
+        private void Click2DeleteOrder(object sender, MouseButtonEventArgs e)
+        {
+            MessageBoxResult del = MessageBox.Show("Are you sure you want to delete this order?","DElete Order",MessageBoxButton.OKCancel);
+
+            if (del == MessageBoxResult.OK)
+            {
+                string err = "";
+
+                var oID = int.Parse(ProductImage.Tag.ToString());
+                OrdersActions.DeleteOrder(oID,false, ref err );
+
+                MessageBoxWnd wnd = new MessageBoxWnd("Order deleted successfully !");
+                wnd.ShowDialog();
+
+                Constants.SessionUser.ShoppingCart = new List<Order>();
+                OrdersActions.PopulateShoppingCart(Constants.SessionUser, ref err);
+
+                ShoppingCart win = (ShoppingCart)Window.GetWindow(this);
+                win.MainDisplay.Children.Clear();
+                win.PopulateCart();
+
+                
+            }
+
         }
     }
 }

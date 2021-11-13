@@ -123,7 +123,8 @@ namespace DataControl.Utils
         string FirstName,
         string LastName,
         bool IsAamin,
-        ref string err)
+        ref string err
+        )
         {
             if (ValidateFieldsForSignUp(FirstName, LastName))
             {
@@ -165,6 +166,41 @@ namespace DataControl.Utils
             return false;
         }
 
+        //Editing user details to database
+        public static bool EditUser(int id,
+        string password,
+        ref string err
+        )
+        {
+                using (var context = new OPDdbContext())
+                {
+                    try
+                    {
+                        var updateUser = context.Users.Single(u => u.UserID == id);
+
+                        //Verify user exist
+                        if (!(updateUser == null))
+                        {
+                        updateUser.Password = password;
+                        context.SaveChanges();
+                        err = "Password Sucessfully updated !";
+                        }
+                        else
+                        {
+                            err = "No such user";
+                            return false;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        err = "No user with this ID";
+                        Console.WriteLine(e.Message);
+                    }
+
+
+                    return false;
+                }
+        }
 
 
 

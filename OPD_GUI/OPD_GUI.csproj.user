@@ -16,10 +16,16 @@
     <Compile Update="SignupScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserControls\AdminProductControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserControls\HomePageContent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControls\MessageBoxWnd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserControls\MyAccount.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserControls\ProductDisplay.xaml.cs">
@@ -42,10 +48,16 @@
     <Page Update="SignupScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UserControls\AdminProductControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UserControls\HomePageContent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\MessageBoxWnd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\MyAccount.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserControls\ProductDisplay.xaml">

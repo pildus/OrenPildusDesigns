@@ -4,28 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OPD_GUI.UserControls" FontFamily="Bebas Neue"
-             Width="530" Height="30" Background="LightGray">
-    <Border BorderThickness="2" BorderBrush="Black">
-        <Grid Width="530">
+             FontSize="12" Foreground="DarkSlateGray"
+             Width="700" Height="35" Background="LightGray">
+    <Border BorderThickness="2" BorderBrush="Black" >
+        <Grid Width="700" VerticalAlignment="Top" Margin="1,1,1,1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
                 <ColumnDefinition Width="100"></ColumnDefinition>
-                <ColumnDefinition Width="80"></ColumnDefinition>
-                <ColumnDefinition Width="80"></ColumnDefinition>
-                <ColumnDefinition Width="80"></ColumnDefinition>
                 <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
                 <ColumnDefinition Width="50"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Border BorderThickness="2" BorderBrush="Black">
-                <Image Name="ProductImage" Source="/images/Products/1.jpg" Width="30" Height="30" Grid.Column="0"></Image>
+                <Image VerticalAlignment="center" Name="ProductImage" Source="/images/Products/1.jpg" Width="35" Height="35" Grid.Column="0"></Image>
             </Border>
             <TextBlock Margin="5,0,0,0" Name="ProductName" Text="Scraming Crow" Grid.Column="1" VerticalAlignment="Center"></TextBlock>
             <TextBlock Name="ProductPrice" Text="Unit Price : 250" Grid.Column="2" VerticalAlignment="Center"></TextBlock>
             <TextBlock Name="OrderQuantity" Text="Quantity : 2" Grid.Column="3" VerticalAlignment="Center"></TextBlock>
             <TextBlock Name="OrderTotalAmount" Text="Total : 500" Grid.Column="4" VerticalAlignment="Center"></TextBlock>
-            <CheckBox Content="Confirm order" Grid.Column="5" VerticalAlignment="Center"></CheckBox>
-            <Image Name="ProductDelete" Source="/images/delete.png" Width="25" Height="25" Grid.Column="6" VerticalAlignment="Center"></Image>
+            <CheckBox Name="chkConfirm" Content="Confirm order" Grid.Column="5" VerticalAlignment="Center"></CheckBox>
+            <Image Name="ProductDelete" Source="/images/delete.png" Width="20" Height="20" Grid.Column="6" VerticalAlignment="Center" MouseDown="Click2DeleteOrder"></Image>
 
         </Grid>
     </Border>

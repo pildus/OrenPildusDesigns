@@ -4,41 +4,51 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OPD_GUI"
-        Title="ShoppingCart" Height="400" Width="580" 
+        Title="ShoppingCart" Height="550" Width="750" 
         FontSize="30" Foreground="White" WindowStyle="None"
         ResizeMode="NoResize" FontFamily="Bebas Neue" 
-        AllowsTransparency="True" Opacity="0.85" 
+        AllowsTransparency="True" Opacity="0.95" 
         WindowStartupLocation="CenterScreen" Icon="/images/ShoppingCart.png" >
-    
+
     <Window.Background>
         <ImageBrush ImageSource="/images/background.jpg"></ImageBrush>
     </Window.Background>
 
     <Border BorderBrush="Black" BorderThickness="5" >
-    <Grid Background="Transparent">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="Button">
-                <Setter Property="FontSize" Value="18"></Setter>
-                <Setter Property="Foreground" Value="Red"></Setter>
-            </Style>
-        </Grid.Resources>
+        
+        
+            <Grid Background="Transparent">
+            
+            <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="FontSize" Value="18"></Setter>
+                        <Setter Property="Foreground" Value="Red"></Setter>
+                    </Style>
+                </Grid.Resources>
 
-            <StackPanel Name="MainDisplay" Grid.ColumnSpan="2">
-                <Label Height="30" HorizontalAlignment="Center" Content="Shopping Cart" />
+            <Label Content="Shopping Cart" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"></Label>
+
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="2">
+                <StackPanel Name="MainDisplay" >
+
+                </StackPanel>
                 
-            </StackPanel>
-        <Button Name="Continue" Margin="10,10,10,10" Grid.Column="1" Grid.Row="1" Content="Continue Shopping" Click="Button_Click"></Button>
-        <Button Name="Checkout" Margin="10,10,10,10" Grid.Column="0" Grid.Row="1" Content="CheckOut" Click="Checkout_Click"></Button>
-    
-    
-    </Grid>
+            </ScrollViewer>
+            <Button Name="Continue" Margin="10,10,10,10" Grid.Column="1" Grid.Row="2" Content="Continue Shopping" Click="ContinueShopping_Click"></Button>
+            <Button Name="Checkout" Margin="10,10,10,10" Grid.Column="0" Grid.Row="2" Content="CheckOut" Click="Checkout_Click"></Button>
+
+
+            </Grid>
+        
     </Border>
 </Window>

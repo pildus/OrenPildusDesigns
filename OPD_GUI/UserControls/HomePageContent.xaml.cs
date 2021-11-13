@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataControl.Utils;
 using DataControl.Model;
+using System.Windows.Media.Animation;
 
 namespace OPD_GUI.UserControls
 {
@@ -22,21 +23,27 @@ namespace OPD_GUI.UserControls
     /// </summary>
     public partial class HomePageContent : UserControl
     {
-        public HomePageContent()
+
+
+        public HomePageContent(int count = 3)
         {
             InitializeComponent();
 
-            Random random = new Random();
-            List<Product> lst = ProductActions.GetProducts(random, 3);
 
-            int col = 0; int row = 0; int count = 3;
+            Random random = new Random();
+            List<Product> lst = ProductActions.GetProducts(random, 4);
+             
+            int col = 0; int row = 0;
 
             foreach (Product p in lst)
             {
-                ProductDisplay pd = new ProductDisplay(p);
-                Grid.SetRow(pd, row);
-                Grid.SetColumn(pd, col);
-                HomepageProductDisplay.Children.Add(pd);
+                ProductDisplay Pdis = new ProductDisplay(p,true);
+                Pdis.Name = $"PDisplay{col}";
+                this.RegisterName(Pdis.Name, Pdis);
+
+                Grid.SetRow(Pdis, row);
+                Grid.SetColumn(Pdis, col);
+                HomepageProductDisplay.Children.Add(Pdis);
 
                 if (col < count)
                 {
@@ -44,5 +51,7 @@ namespace OPD_GUI.UserControls
                 }
             }
         }
+
+
     }
 }

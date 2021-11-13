@@ -8,13 +8,17 @@
         xmlns:a="clr-namespace:DataControl.Model;assembly=DataControl"
         mc:Ignorable="d" 
         Title="Oren Pildus Designs" Height="800" Width="1280" 
-        FontSize="30" Background="#0f0f2D" Foreground="White" WindowStyle="None"
+        FontSize="30" Foreground="White" WindowStyle="None"
         ResizeMode="NoResize" FontFamily="Bebas Neue" 
         WindowStartupLocation="CenterScreen" >
-
+    
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/mainbackground.jpg" Stretch="Fill" TileMode="None"/>
+    </Window.Background>
+    
     <!-- Main Grid Definitions-->
     <Grid DockPanel.Dock="Top" HorizontalAlignment="Left" 
-          Name="grid1" ShowGridLines="false"  Width="1280" Background="#0f0f2d">
+          Name="grid1" ShowGridLines="false"  Width="1280" Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition/>
@@ -28,17 +32,38 @@
 
         <Grid.Resources>
             <Style TargetType="Label">
-                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Foreground" Value="Black"></Setter>
             </Style>
             <Style TargetType="TabItem">
-                <Setter Property="Background" Value="#0f0f2d"></Setter>
-                <Setter Property="Foreground" Value="White"></Setter>
+                <!--<Setter Property="Background" Value="Transparent"></Setter>-->
+                <Setter Property="Foreground" Value="Black"></Setter>
                 <Setter Property="FontSize" Value="30"></Setter>
                 <Setter Property="FontWeight" Value="Bold"></Setter>
+                <Setter Property="Height" Value="100"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TabItem">
+                            <Border Name="Border" Background="Silver" Opacity="0.9" CornerRadius="5" Margin="0,10,0,10">
+                                <ContentPresenter x:Name="ContentSite"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                ContentSource="Header"
+                                Margin="10,2"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True" SourceName="Border">
+                                    <Setter TargetName="Border" Property="Background" Value="Blue" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
             <Style TargetType="TabControl">
                 <Setter Property="Foreground" Value="White"></Setter>
-                <Setter Property="Background" Value="#0f0f2d"></Setter>
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
             </Style>
         </Grid.Resources>
 
@@ -86,13 +111,6 @@
 
 
 
-
-            <!--            <Label HorizontalAlignment="center" VerticalAlignment="Center" Name="ExitBtn"
-               MouseLeftButtonDown="ExitBtn_MouseLeftButtonDown" Cursor="Hand"
-                     Foreground="Red" Grid.Column="3">
-                Exit
-            </Label>-->
-
         </Grid>
 
 
@@ -100,22 +118,8 @@
         <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                     Name="ProductStackPanel" TabStripPlacement="Left" 
                     Margin="0, 0, 0, 10" SelectionChanged="OnSelectionChanged" >
-            <TabControl.Resources>
-                <Style TargetType="TabControl">
-                    <Setter Property="BorderBrush"  Value="#0f0f2d"></Setter>
-                </Style>
-                <Style TargetType="TabItem">
-                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
-                    <Setter Property="BorderThickness" Value="0"></Setter>
-                    <Setter Property="Background" Value="#0f0f2d"></Setter>
-                    <Setter Property="Cursor" Value="Hand"></Setter>
-                    <Setter Property="Foreground" Value="White"></Setter>
-                </Style>
 
-            </TabControl.Resources>
-            <TabControl.Background>
-                <ImageBrush ImageSource="/Images/logo.png" Stretch="Uniform" TileMode="None"/>
-            </TabControl.Background>
+           
         </TabControl>
     </Grid>
 </Window>
