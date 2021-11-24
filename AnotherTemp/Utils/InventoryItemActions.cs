@@ -108,9 +108,9 @@ namespace DataControl.Utils
                     
                 }
             }
-            catch (Exception e)
+            catch
             {
-                //err = e.Message;
+                
                 return -100;
             }
         }

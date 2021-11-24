@@ -5,10 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OPD_GUI"
         mc:Ignorable="d"
-        Title="Login" Height="550" Width="300" FontSize="12" Background="#04c582" WindowStartupLocation="CenterScreen">
+        Title="Login" Height="550" Width="300" FontSize="12" WindowStartupLocation="CenterScreen">
 
-    <Border Background="#0f0f2D" CornerRadius="20" Margin="20">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/mainbackground.jpg" Stretch="Fill" TileMode="None"/>
+    </Window.Background>
+
+    <Border Background="#0f0f2D" CornerRadius="20" Margin="20" Opacity="0.9">
         <StackPanel Margin="20">
+            <Image Source="/images/logo_small.png" Width="150"></Image>
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
             <Separator  ></Separator>
             <Label Content="Email" Foreground="White"/>

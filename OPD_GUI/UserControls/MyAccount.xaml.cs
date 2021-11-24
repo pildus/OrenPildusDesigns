@@ -82,6 +82,27 @@ namespace OPD_GUI.UserControls
             }
             return newLst;
         }
+
+        private void resetFilter_Click(object sender, RoutedEventArgs e)
+        {
+            // Retrieve all confirmed orders for this user
+            List<ComplexOrder> OrdersLst = OrdersActions.GetOrders(Constants.SessionUser.UserName);
+
+            OrderDG.ItemsSource = ExtractOrdersList(OrdersLst);
+        }
+        private void filterByDates_Click(object sender, RoutedEventArgs e)
+        {
+            if (startDate != null && endDate != null & endDate.SelectedDate >= startDate.SelectedDate)
+            {
+                List<ComplexOrder> OrdersLst = OrdersActions.GetOrders((DateTime)startDate.SelectedDate, (DateTime)endDate.SelectedDate, Constants.SessionUser.UserID);
+                OrderDG.ItemsSource = ExtractOrdersList(OrdersLst);
+            }
+            else
+            {
+                MessageBoxWnd wnd = new MessageBoxWnd("Invalid Dates");
+                wnd.ShowDialog();
+            }
+        }
     }
 
     class OrderDisplay

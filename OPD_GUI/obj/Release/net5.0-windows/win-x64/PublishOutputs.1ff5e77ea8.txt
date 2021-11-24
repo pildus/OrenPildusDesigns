@@ -1,0 +1,7 @@
+C:\Temp\OPD_GUI.pdb
+C:\Temp\DataControl.exe
+C:\Temp\DataControl.runtimeconfig.json
+C:\Temp\Microsoft.Data.SqlClient.SNI.dll
+C:\Temp\Microsoft.Data.SqlClient.SNI.pdb
+C:\Temp\DataControl.pdb
+C:\Temp\OPD_GUI.exe

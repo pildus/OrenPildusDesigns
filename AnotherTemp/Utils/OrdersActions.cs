@@ -87,7 +87,7 @@ namespace DataControl.Utils
                         return lst;
                     }
                 }
-                catch (Exception e)
+                catch
                 {
                     return null;
                 }
@@ -141,7 +141,7 @@ namespace DataControl.Utils
                                from u in context.Users
                                where o.OrderInventoryItemID == i.InventoryItemID &&
                                i.InventoryItemProductID == p.ProductId &&
-                               o.OrderUserID == u.UserID && u.UserName == Username
+                               o.OrderUserID == u.UserID && u.UserName == Username && o.OrderIsConfirmed == true
                                select new ComplexOrder
                                {
                                    cOrder = o,
@@ -217,7 +217,7 @@ namespace DataControl.Utils
                 return null;
             }
         }
-        public static List<ComplexOrder> GetOrders(DateTime StartOrderDate, DateTime EndOrderDate)
+        public static List<ComplexOrder> GetOrders(DateTime StartOrderDate, DateTime EndOrderDate, int UserID)
         {
             try
             {
@@ -231,6 +231,7 @@ namespace DataControl.Utils
                                i.InventoryItemProductID == p.ProductId &&
                                o.OrderUserID == u.UserID &&
                                o.OrderDate >= StartOrderDate && o.OrderDate <= EndOrderDate
+                               && o.OrderIsConfirmed == true && u.UserID == UserID
                                select new ComplexOrder
                                {
                                    cOrder = o,

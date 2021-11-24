@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OPD_GUI.UserControls"
-   Width="1180" Height="730" FontFamily="Bebas Neue" FontSize="30">
+
+             
+   Width="1180" Height="730" FontSize="14" >
     <Grid Background="Transparent" Width="1180" Height="730">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -74,10 +76,24 @@
         </Border>
 
         <Border Name="MyOrders" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
-                Height="300" Width="500" Margin="20,20,20,20" 
+                Height="300" Width="Auto" Margin="20,20,20,20" 
                Background="AliceBlue" CornerRadius="30" VerticalAlignment="Top">
-          
-            <DataGrid Height="Auto" Width="470" HorizontalAlignment="Center" 
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="10,10,10,10">
+                    <Label Content="Pick start Date :"></Label>
+                    <DatePicker Name="startDate"></DatePicker>
+                    <Label Content="Pick end Date :"></Label>
+                    <DatePicker Name="endDate"></DatePicker>
+                    <Button Margin="0,5,0,5" Name="filterByDates" Content="Filter By Dates" Click="filterByDates_Click"></Button>
+                    
+                    <Separator></Separator>
+
+                    <Button Margin="0,5,0,5" Name="resetFilters" Content="Reset Filter" Click="resetFilter_Click"></Button>
+
+                </StackPanel>
+                
+                <Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="Black" />
+                <DataGrid Height="Auto" Width="Auto" HorizontalAlignment="Center" 
                       Name="OrderDG" Margin="20,20,20,20" FontSize="14">
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
@@ -85,6 +101,7 @@
                     </Style>
                 </DataGrid.RowStyle>
             </DataGrid>
+            </StackPanel>
         </Border>
     </Grid>
 </UserControl>

@@ -85,7 +85,7 @@ namespace OPD_GUI
             }
             else
             {
-                MessageBoxWnd wnd = new MessageBoxWnd("Congrats !!! Your order in on the way !");
+                MessageBoxWnd wnd = new MessageBoxWnd("No items were confirmed for checkout !");
                 wnd.ShowDialog();
             }
 

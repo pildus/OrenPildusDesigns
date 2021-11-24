@@ -16,6 +16,8 @@ using OPD_GUI;
 using DataControl.Model;
 using DataControl.Utils;
 using System.Windows.Media.Animation;
+using System.Text.RegularExpressions;
+
 
 namespace OPD_GUI.UserControls
 {
@@ -40,8 +42,14 @@ namespace OPD_GUI.UserControls
 
             Product PdlPrd = (Product)prd;
             ProductTitle.Content = PdlPrd.ProductName;
-            Availability.Content = "Currently Available : " + InventoryItemActions.GetProductInventoryStatus(PdlPrd.ProductId).ToString();
-            ProductImage.Source = new BitmapImage(new Uri("/images/Products/" + PdlPrd.ProductId + ".jpg", UriKind.Relative));
+
+            if (InventoryItemActions.GetProductInventoryStatus(PdlPrd.ProductId) > 0)
+                Availability.Content = "Currently Available : " + InventoryItemActions.GetProductInventoryStatus(PdlPrd.ProductId).ToString();
+            else
+                Availability.Content = "Currently N/A";
+
+            //ProductImage.Source = new BitmapImage(new Uri("/images/Products/" + PdlPrd.ProductId + ".jpg", UriKind.Relative));
+            ProductImage.Source = new BitmapImage(new Uri("http://pildus-001-site1.gtempurl.com/images/Products/" + PdlPrd.ProductId + ".jpg", UriKind.Absolute));
             ProductPrice.Text = PdlPrd.ProductPrice.ToString() + c.ToString();
             ProductProductID.Content = PdlPrd.ProductId;
 
@@ -86,23 +94,39 @@ namespace OPD_GUI.UserControls
         {
             myStoryboard.Begin(this);
         }
+
         private void AddToSC_Click(object sender, RoutedEventArgs e)
         {
             string s = "";
             int ProductID = int.Parse(ProductProductID.Content.ToString());
+            int Qty = int.Parse(QtyTxt.Text);
             Product p = ProductActions.GetProducts(ProductID);
 
-            if (OrdersActions.AddOrder(Constants.SessionUser.UserID, p.ProductId, 1, p.ProductPrice, ref s, false))
+            try
             {
-                MessageBoxWnd msgWnd = new MessageBoxWnd("Congratulations\nThis item was added to your shopping cart");
+                if (OrdersActions.AddOrder(Constants.SessionUser.UserID, p.ProductId, Qty, p.ProductPrice, ref s, false))
+                {
+                    MessageBoxWnd msgWnd = new MessageBoxWnd("Congratulations\nThis item was added to your shopping cart");
+                    msgWnd.ShowDialog();
+
+                    MainWindow win = (MainWindow)Window.GetWindow(this);
+
+                    win.RefreshShoppingCartCount();
+                    win.ProductStackPanel.Items.Refresh();
+                }
+            }
+            catch
+            {
+                MessageBoxWnd msgWnd = new MessageBoxWnd("Item quantity Invalid.");
                 msgWnd.ShowDialog();
 
-                MainWindow win = (MainWindow)Window.GetWindow(this);
-
-                win.RefreshShoppingCartCount();
-                win.ProductStackPanel.Items.Refresh();
             }
+        }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace DataControl.Utils
                     return newLst;
                 }
             }
-            catch(Exception e)
+            catch
             {
                 return null;
             }
@@ -133,7 +133,7 @@ namespace DataControl.Utils
                     return lst;
                 }
             }
-            catch (Exception e)
+            catch
             {
                 return null;
             }

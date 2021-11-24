@@ -1,0 +1,7 @@
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\publish\OPD_GUI.pdb
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\publish\DataControl.exe
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\publish\DataControl.runtimeconfig.json
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\publish\Microsoft.Data.SqlClient.SNI.dll
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\publish\Microsoft.Data.SqlClient.SNI.pdb
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\publish\DataControl.pdb
+H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\publish\OPD_GUI.exe

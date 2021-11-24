@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OPD_GUI.UserControls"
-      Width="220" Height="330"  FontFamily="Bebas Neue" FontSize="20"
+             
+             
+             Width="220" Height="330"  FontFamily="Bebas Neue" FontSize="20"
              Foreground="White" Margin="10,10,10,10">
     <Border CornerRadius="10" BorderThickness="2" BorderBrush="Black" Background="#6d6b89" Opacity="0.92">
         <StackPanel>
@@ -22,25 +24,26 @@
 
             <TextBlock HorizontalAlignment="Center" Name="ProductPrice">10 NIS</TextBlock>
 
-            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-            <Button Name="AddToSC" Content="Add To Shopping Cart" 
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0" Width="Auto">
+                <Button Name="AddToSC" Content="Add To Shopping Cart" 
                     Width="140" FontSize="16" Click="AddToSC_Click">
-                <Button.Style>
+                    <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="DarkGoldenrod"/>
+                                <Setter Property="Foreground" Value="Gray"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
-            </Button>
-               
-            
+                </Button>
+                <TextBlock Margin="6,0,0,0">Qty</TextBlock>
+                <TextBox Margin="4,0,0,0" Name="QtyTxt" Text="1"  Width="25" HorizontalAlignment="Left" TextAlignment="Center"
+                         PreviewTextInput="NumberValidationTextBox"></TextBox>
 
             </StackPanel>
-            
-            
+
+
             <Label Visibility="Hidden" Name="ProductProductID" Content="0"></Label>
         </StackPanel>
     </Border>

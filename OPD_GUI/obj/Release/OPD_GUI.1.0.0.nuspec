@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>OPD_GUI</id>
+    <version>1.0.0</version>
+    <authors>OPD_GUI</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net5.0-windows7.0">
+        <dependency id="DataControl" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="5.0.11" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="5.0.11" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net5.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\OPD_GUI.runtimeconfig.json" target="lib\net5.0-windows7.0\OPD_GUI.runtimeconfig.json" />
+    <file src="H:\לימודים\קורס מורחב\פרוייקט אמצע\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OrenPildusDesigns\OPD_GUI\bin\Release\net5.0-windows\OPD_GUI.dll" target="lib\net5.0-windows7.0\OPD_GUI.dll" />
+  </files>
+</package>

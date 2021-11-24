@@ -11,8 +11,9 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Image Source="/images/logo2.png" Grid.Row="0" Stretch="None"
-               VerticalAlignment="Top" Margin="161,-77,132,0" Height="650" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+        <StackPanel Height="Auto" Grid.Row="0"  Margin="0,-30,0,0" Grid.RowSpan="2">
+        <Image Source="/images/logo2.png" Width="700"  Stretch="Uniform"
+               VerticalAlignment="Top">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -22,6 +23,13 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+ 
+        <DockPanel Height="45" Margin="0,-350,0,0">
+            <Label DockPanel.Dock="left" Content="Get A Glimps in some random prpducts..."/>
+            <Separator/>
+        </DockPanel>
+        </StackPanel>
+
         <Grid Grid.Row="1" Name="HomepageProductDisplay" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>

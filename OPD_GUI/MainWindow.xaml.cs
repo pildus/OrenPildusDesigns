@@ -21,16 +21,13 @@ using OPD_GUI.UserControls;
 
 namespace OPD_GUI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
-            string err = "";
             InitializeComponent();
-           // UserActions.UserLogin("pildus@gmail.com", "Leviha2016!", ref err);
+
             Application.Current.MainWindow = this;
 
             //Setting welcome user name and shopping cart items.
@@ -59,7 +56,7 @@ namespace OPD_GUI
 
             prdTab.Name = "Home";
             //prdTab.Header = "Home";
-            prdTab.Header = new Image() { Source = new BitmapImage(new Uri("/images/home.png", UriKind.Relative)) };
+            prdTab.Header = new Image() { Source = new BitmapImage(new Uri("/images/home.png", UriKind.Relative)) , Width=70 , Height = 70 };
             prdTab.Content = new HomePageContent(4);
             ProductStackPanel.Items.Add(prdTab);
 
@@ -79,11 +76,16 @@ namespace OPD_GUI
                 };
 
                 scrl.Content = DisplayProducts(ProductActions.GetProducts(item));
+                
+                StackPanel stc = new StackPanel() { HorizontalAlignment = HorizontalAlignment.Center };
+                Image img = new Image() { Source = new BitmapImage(new Uri($"/images/{item.ToString().ToLower()}.png", UriKind.Relative)), Width = 70, Height = 70 };
+                stc.Children.Add(img);
+                stc.Children.Add(new Label { Content = item.ToString() + "s" , FontSize=14,HorizontalAlignment = HorizontalAlignment.Center});
+
 
                 prdTab = new TabItem();
                 prdTab.Name = item.ToString();
-                prdTab.Header = new Image() { Source = new BitmapImage(new Uri($"/images/{item.ToString().ToLower()}.png", UriKind.Relative)) }; 
-                //prdTab.Header = item.ToString() + "s";
+                prdTab.Header = stc;
                 prdTab.Content = scrl;
                 ProductStackPanel.Items.Add(prdTab);
             }

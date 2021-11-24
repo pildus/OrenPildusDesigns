@@ -37,7 +37,7 @@ namespace OPD_GUI.UserControls
 
             foreach (Product p in lst)
             {
-                ProductDisplay Pdis = new ProductDisplay(p,true);
+                ProductDisplay Pdis = new ProductDisplay(p,false);
                 Pdis.Name = $"PDisplay{col}";
                 this.RegisterName(Pdis.Name, Pdis);
 

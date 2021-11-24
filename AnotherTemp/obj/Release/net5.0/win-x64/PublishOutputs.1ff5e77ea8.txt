@@ -1,0 +1,8 @@
+C:\Temp\DataControl.pdb
+C:\Temp\clrcompression.dll
+C:\Temp\clrjit.dll
+C:\Temp\coreclr.dll
+C:\Temp\mscordaccore.dll
+C:\Temp\Microsoft.Data.SqlClient.SNI.dll
+C:\Temp\Microsoft.Data.SqlClient.SNI.pdb
+C:\Temp\DataControl.exe

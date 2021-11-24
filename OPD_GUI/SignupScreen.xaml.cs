@@ -12,9 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 using DataControl.DataAccess;
 using DataControl.Utils;
+using OPD_GUI.UserControls;
 
 namespace OPD_GUI
 {
@@ -35,7 +35,8 @@ namespace OPD_GUI
             if (ValidateFormFields())
             {
                 bool b = UserActions.UserSignUp(txtUsername.Text, txtFName.Text, txtLName.Text, txtPassword.Password, txtEmail.Text, false, ref err);
-                MessageBox.Show(err);
+                MessageBoxWnd msgWnd = new MessageBoxWnd("Welcome aboard !!!\nPlease login to start using the system");
+                msgWnd.ShowDialog();
 
                 if (b)
                 {
