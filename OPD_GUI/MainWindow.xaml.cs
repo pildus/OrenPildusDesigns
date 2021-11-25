@@ -18,6 +18,7 @@ using DataControl.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using OPD_GUI.UserControls;
+using System.Threading;
 
 namespace OPD_GUI
 {
@@ -30,15 +31,20 @@ namespace OPD_GUI
 
             Application.Current.MainWindow = this;
 
+
+            //Creating Main Navigation functionality and screens
+            CreateMainNavigation();
+
             //Setting welcome user name and shopping cart items.
             lblHello.Content = "Hello " + Constants.SessionUser.FirstName;
 
             //Creating Shopping Cart
             RefreshShoppingCartCount();
 
-            //Creating Main Navigation functionality and screens
-            CreateMainNavigation();
+            
+            
         }
+
 
         public int RefreshShoppingCartCount()
         {
@@ -47,16 +53,19 @@ namespace OPD_GUI
             return count;
         }
 
+
+
         // Generate products display in the Tab Content Page
         private void CreateMainNavigation()
         {
+
             #region CreatingMainTabsNavigation
-            // Creating Homw Tab
+            // Creating Home Tab
             TabItem prdTab = new TabItem();
 
             prdTab.Name = "Home";
             //prdTab.Header = "Home";
-            prdTab.Header = new Image() { Source = new BitmapImage(new Uri("/images/home.png", UriKind.Relative)) , Width=70 , Height = 70 };
+            prdTab.Header = new Image() { Source = new BitmapImage(new Uri("/images/home.png", UriKind.Relative)), Width = 70, Height = 70 };
             prdTab.Content = new HomePageContent(4);
             ProductStackPanel.Items.Add(prdTab);
 
@@ -76,11 +85,11 @@ namespace OPD_GUI
                 };
 
                 scrl.Content = DisplayProducts(ProductActions.GetProducts(item));
-                
+
                 StackPanel stc = new StackPanel() { HorizontalAlignment = HorizontalAlignment.Center };
                 Image img = new Image() { Source = new BitmapImage(new Uri($"/images/{item.ToString().ToLower()}.png", UriKind.Relative)), Width = 70, Height = 70 };
                 stc.Children.Add(img);
-                stc.Children.Add(new Label { Content = item.ToString() + "s" , FontSize=14,HorizontalAlignment = HorizontalAlignment.Center});
+                stc.Children.Add(new Label { Content = item.ToString() + "s", FontSize = 14, HorizontalAlignment = HorizontalAlignment.Center });
 
 
                 prdTab = new TabItem();

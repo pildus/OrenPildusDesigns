@@ -24,7 +24,7 @@ namespace DataControl.Model
         public ProductTypes ProductType { get; set; }
 
         public EffectTypes EffectType { get; set; }
-        public ComponentTypes ComponentType { get; set; }
+        
     }
 
 }

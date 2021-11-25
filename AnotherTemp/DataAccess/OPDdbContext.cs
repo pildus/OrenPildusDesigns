@@ -27,7 +27,7 @@ namespace DataControl.DataAccess
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=OrenPildusDesignsDB;Trusted_Connection=True;MultipleActiveResultSets=true");
-               // optionsBuilder.UseSqlServer("Server=SQL5097.site4now.net;Initial Catalog=db_a7c69f_pildus;User Id=db_a7c69f_pildus_admin;Password=Leviha2016!");
+                // optionsBuilder.UseSqlServer("Server=SQL5102.site4now.net;Initial Catalog=db_a7c69f_pildus;User Id=db_a7c69f_pildus_admin;Password=Leviha2016!");
                 // .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
 
             }
@@ -38,7 +38,7 @@ namespace DataControl.DataAccess
             builder.Entity<User>()
                 .HasIndex(u => u.EmailAddress)
                 .IsUnique();
-            
+
             builder.Entity<InventoryItem>()
                 .HasIndex(i => i.InventoryItemProductID)
                 .IsUnique();
@@ -50,7 +50,7 @@ namespace DataControl.DataAccess
             builder.Entity<Order>()
            .HasOne<User>(s => s.User)
            .WithMany(g => g.ShoppingCart);
-           
+
 
             //builder.Entity<User>().HasMany(u => u.ShoppingCart);
 

@@ -9,8 +9,7 @@
         mc:Ignorable="d" 
         Title="Oren Pildus Designs" Height="800" Width="1280" 
         FontFamily="Bebas Neue" FontSize="20" Foreground="White" WindowStyle="None" Icon="/images/pedal.png"
-        ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen" >
+        ResizeMode="NoResize"        WindowStartupLocation="CenterScreen" >
     
     <Window.Background>
         <ImageBrush ImageSource="/Images/mainbackground.jpg" Stretch="Fill" TileMode="None"/>

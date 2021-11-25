@@ -17,40 +17,24 @@ namespace DataControl.DataAccess
             string err = "";
             Constants.SessionUser.IsAdmin = true;
 
+           // ClearData();
+
             #region CreateUsers
-            string EmailAddress = "pildus@gmail.com";
-            string Password = "Leviha2016!";
-            string FirstName = "Oren";
-            string LastName = "Pildus";
-            string UserName = "Pildus";
+            string EmailAddress = "admin@admin.com";
+            string Password = "Admin123!";
+            string FirstName = "Admin";
+            string LastName = "Admin";
+            string UserName = "Admin";
             bool IsAdmin = true;
             UserActions.UserSignUp(UserName, FirstName, LastName, Password, EmailAddress, IsAdmin, ref err);
             Console.WriteLine(err);
 
-            EmailAddress = "pildus@hotmail.com";
-            Password = "Leviha2016!";
-            FirstName = "Oren";
-            LastName = "Pildus";
-            UserName = "Pildus2";
+            EmailAddress = "user@user.com";
+            Password = "User123!";
+            FirstName = "User";
+            LastName = "User";
+            UserName = "User";
             IsAdmin = false;
-            UserActions.UserSignUp(UserName, FirstName, LastName, Password, EmailAddress, IsAdmin, ref err);
-            Console.WriteLine(err);
-
-            EmailAddress = "atara@gmail.com";
-            Password = "Atara12Delange!";
-            FirstName = "Atara";
-            LastName = "De Lange";
-            UserName = "Atara";
-            IsAdmin = false;
-            UserActions.UserSignUp(UserName, FirstName, LastName, Password, EmailAddress, IsAdmin, ref err);
-            Console.WriteLine(err);
-
-            EmailAddress = "victor@gmail.com";
-            Password = "VictorY123!";
-            FirstName = "Victor";
-            LastName = "Yampolski";
-            UserName = "victory";
-            IsAdmin = true;
             UserActions.UserSignUp(UserName, FirstName, LastName, Password, EmailAddress, IsAdmin, ref err);
             Console.WriteLine(err);
             #endregion
@@ -176,17 +160,52 @@ namespace DataControl.DataAccess
             InventoryItemActions.AddInventoryItem(28, 40, ref err, 10);
             Console.WriteLine(err);
             #endregion
-
-            #region AddOrders
-            OrdersActions.AddOrder(2, 1, 1, 250, ref err, false);
-            Console.WriteLine(err);
-            OrdersActions.AddOrder(2, 4, 1, 250, ref err, false);
-            Console.WriteLine(err);
-            OrdersActions.AddOrder(2, 14, 2, 50, ref err, false);
-            Console.WriteLine(err);
-            OrdersActions.AddOrder(2, 26, 2, 30, ref err, false);
-            Console.WriteLine(err);
-            #endregion
         }
+
+        //private static void ClearData()
+        //{
+        //    using (var context = new OPDdbContext())
+        //    {
+        //        var users = context.Users.ToList();
+        //        context.RemoveRange(users);
+        //        context.SaveChanges();
+        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('Users', RESEED, 0)"); //Reset AUTO_INCREMENT
+
+        //        var products = context.Products.ToList();
+        //        context.RemoveRange(products);
+        //        context.SaveChanges();
+        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('products', RESEED, 0)"); //Reset AUTO_INCREMENT
+        //                                                                                  //
+        //        var Pedals = context.Pedals.ToList();
+        //        context.RemoveRange(Pedals);
+        //        context.SaveChanges();
+                
+
+        //        var Boards = context.Boards.ToList();
+        //        context.RemoveRange(Boards);
+        //        context.SaveChanges();
+                
+
+        //        var Components = context.Components.ToList();
+        //        context.RemoveRange(Components);
+        //        context.SaveChanges();
+                
+
+
+        //        var Inventory = context.Inventory.ToList();
+        //        context.RemoveRange(Inventory);
+        //        context.SaveChanges();
+        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('Inventory', RESEED, 0)"); //Reset AUTO_INCREMENT
+
+        //        var Orders = context.Orders.ToList();
+        //        context.RemoveRange(Orders);
+        //        context.SaveChanges();
+        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('Orders', RESEED, 0)"); //Reset AUTO_INCREMENT
+
+
+        //    }
+        //}
     }
+
+
 }

@@ -10,7 +10,9 @@ namespace DataControl.Model
     [Table("Inventory")]
     public class InventoryItem
     {
+        [Key]
         public int InventoryItemID { get; set; }
+        [ForeignKey ("Products")]
         public int InventoryItemProductID { get; set; }
         public int InentoryItemQuantity { get; set; }
         public double InventoryItemSpecialPrice { get; set; }

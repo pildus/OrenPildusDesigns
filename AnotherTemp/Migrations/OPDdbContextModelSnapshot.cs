@@ -90,9 +90,6 @@ namespace DataControl.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ComponentType")
-                        .HasColumnType("int");
-
                     b.Property<int>("EffectType")
                         .HasColumnType("int");
 
@@ -167,6 +164,9 @@ namespace DataControl.Migrations
             modelBuilder.Entity("DataControl.Model.Component", b =>
                 {
                     b.HasBaseType("DataControl.Model.Product");
+
+                    b.Property<int>("ComponentType")
+                        .HasColumnType("int");
 
                     b.Property<int>("QuantityPerLot")
                         .HasColumnType("int");

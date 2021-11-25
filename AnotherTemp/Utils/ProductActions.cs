@@ -202,7 +202,9 @@ namespace DataControl.Utils
                 using (var context = new OPDdbContext())
                 {
                     List<Product> lst = (from p in context.Products
-                                         where p.ProductType == ProductTypes.Component && p.ComponentType == ct
+                                         from c in context.Components
+                                         where p.ProductType == ProductTypes.Component && c.ComponentType == ct
+                                         && c.ProductId == p.ProductId
                                          select p).ToList();
                     return lst;
                 }

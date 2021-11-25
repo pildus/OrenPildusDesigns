@@ -14,6 +14,8 @@ namespace DataControl.Model
     {
         [Required]
         public int QuantityPerLot { get; set; }
-
+        
+        
+        public ComponentTypes ComponentType { get; set; }
     }
 }

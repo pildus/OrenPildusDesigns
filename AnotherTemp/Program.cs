@@ -16,11 +16,7 @@ namespace DataControl
     {
         static void Main(string[] args)
         {
-           //  PopulateDB.PopulateAll();
-            //string err = "";
-           // UserActions.UserLogin("pildus@hotmail.com", "Leviha2016!", ref err);
-           
-
+           PopulateDB.PopulateAll();
         }
     }
 }
