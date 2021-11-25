@@ -60,6 +60,7 @@ namespace DataControl.Utils
         string Password,
         string EmailAddress,
         bool IsAdmin,
+        int UserType,
         ref string err)
         {
             if (ValidateFieldsForSignUp(UserName, FirstName, LastName, Password, EmailAddress))
@@ -79,16 +80,20 @@ namespace DataControl.Utils
                                 LastName = LastName,
                                 Password = ValidationControl.Encrypt_Password(Password),
                                 UserName = UserName,
-                                
+                                User_UserTypeId = UserType
                             };
 
                             if (IsAdmin)
+                            {
                                 newUser.IsAdmin = true;
-
+                                err = "Admin User added Successfully";
+                            }
+                            else
+                                err = "User added Successfully";
 
                             context.Add<User>(newUser);
                             context.SaveChanges();
-                            err = "Good. User added";
+                            
                             return true;
                         }
                         else
@@ -166,7 +171,7 @@ namespace DataControl.Utils
             return false;
         }
 
-        //Editing user details to database
+        //Editing user password to database
         public static bool EditUser(int id,
         string password,
         ref string err
@@ -202,7 +207,26 @@ namespace DataControl.Utils
                 }
         }
 
+        public static bool CreateUserType(string desc , ref string err)
+        {
+            try
+            {
+                using (var context = new OPDdbContext())
+                {
+                    UserType ut = new UserType { UserTypeDescription = desc };
+                    context.UserTypes.Add(ut);
+                    context.SaveChanges();
 
+                    err = "UserType created successfully";
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+                return false;
+            }
+        }
 
 
 

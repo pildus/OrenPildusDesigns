@@ -123,7 +123,7 @@ namespace DataControl.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsAdmin")
+                    b.Property<bool>("IsAdmin")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
@@ -140,12 +140,33 @@ namespace DataControl.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("User_UserTypeId")
+                        .HasColumnType("int");
+
                     b.HasKey("UserID");
 
                     b.HasIndex("EmailAddress")
                         .IsUnique();
 
+                    b.HasIndex("User_UserTypeId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DataControl.Model.UserType", b =>
+                {
+                    b.Property<int>("UserTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("UserTypeDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserTypeId");
+
+                    b.ToTable("UserTypes");
                 });
 
             modelBuilder.Entity("DataControl.Model.Board", b =>
@@ -184,6 +205,17 @@ namespace DataControl.Migrations
                     b.ToTable("Pedals");
                 });
 
+            modelBuilder.Entity("DataControl.Model.InventoryItem", b =>
+                {
+                    b.HasOne("DataControl.Model.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("InventoryItemProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("DataControl.Model.Order", b =>
                 {
                     b.HasOne("DataControl.Model.InventoryItem", "InventoryItem")
@@ -197,6 +229,17 @@ namespace DataControl.Migrations
                     b.Navigation("InventoryItem");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataControl.Model.User", b =>
+                {
+                    b.HasOne("DataControl.Model.UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("User_UserTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserType");
                 });
 
             modelBuilder.Entity("DataControl.Model.Board", b =>

@@ -34,7 +34,7 @@ namespace OPD_GUI
 
             if (ValidateFormFields())
             {
-                bool b = UserActions.UserSignUp(txtUsername.Text, txtFName.Text, txtLName.Text, txtPassword.Password, txtEmail.Text, false, ref err);
+                bool b = UserActions.UserSignUp(txtUsername.Text, txtFName.Text, txtLName.Text, txtPassword.Password, txtEmail.Text, false,3, ref err);
                 MessageBoxWnd msgWnd = new MessageBoxWnd("Welcome aboard !!!\nPlease login to start using the system");
                 msgWnd.ShowDialog();
 

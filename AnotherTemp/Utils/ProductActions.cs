@@ -15,23 +15,33 @@ namespace DataControl.Utils
 {
     public static class ProductActions
     {
-        public static bool DeleteProduct(int ProductID)
+        public static bool DeleteProduct(int ProductID, ref string err)
         {
-            using (var context = new OPDdbContext())
+            if (Constants.SessionUser.IsAdmin == true)
             {
                 try
                 {
-                    var delPrd = context.Products.Single(p => p.ProductId == ProductID);
-                    context.Remove<Product>(delPrd);
-                    context.SaveChanges();
+                    using (var context = new OPDdbContext())
+                    {
+                        var delPrd = context.Products.Single(p => p.ProductId == ProductID);
+                        context.Remove<Product>(delPrd);
+                        context.SaveChanges();
+
+                        err = "Product Deleted Successfully !";
+                        return true;
+                    }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    err = ex.Message;
                     return false;
                 }
             }
-
-            return false;
+            else
+            {
+                err = "You don't have permissions for this action !";
+                return false;
+            }
         }
 
 
@@ -65,14 +75,14 @@ namespace DataControl.Utils
                     for (int i = 0; i < count; i++)
                     {
                         tmp = lst[random.Next(lst.Count)];
-                        
-                        if (newLst.Any(p => p.ProductId ==tmp.ProductId) == false)
-                       // if (newLst.Any(p => p.ProductId == lst[3].ProductId == false))
+
+                        if (newLst.Any(p => p.ProductId == tmp.ProductId) == false)
+                            // if (newLst.Any(p => p.ProductId == lst[3].ProductId == false))
                             newLst.Add(tmp);
                         else
                             i--;
                     }
-                    
+
                     return newLst;
                 }
             }
@@ -124,11 +134,11 @@ namespace DataControl.Utils
                 using (var context = new OPDdbContext())
                 {
                     var lst = (from p in context.Products
-                              from i in context.Inventory
-                              from o in context.Orders
-                              where i.InventoryItemProductID == p.ProductId && o.OrderInventoryItemID == i.InventoryItemID
-                              && ord.OrderID == o.OrderID
-                              select p).Single();
+                               from i in context.Inventory
+                               from o in context.Orders
+                               where i.InventoryItemProductID == p.ProductId && o.OrderInventoryItemID == i.InventoryItemID
+                               && ord.OrderID == o.OrderID
+                               select p).Single();
                     //return new List<Product>() { lst } ;
                     return lst;
                 }
@@ -216,25 +226,302 @@ namespace DataControl.Utils
 
         } // returns a list of all products of [Product Type]
 
-        // Methods to call the display method for ecah product type
-        public static void ProuctDisplay(Product prd)
-        {
-            string err = "";
 
-            switch (prd)
+
+        // ** ** ** ** ** ** ** ** ** ** ** **
+        // ** Method overloads to adding products
+        // ** ** ** ** ** ** ** ** ** ** ** **
+
+        // Add function for Pedals
+        public static bool AddProduct(string productName, double productPrice, ProductTypes productType, EffectTypes EffectType, string pedalDescr, ref string err)
+        {
+            if (Constants.SessionUser.IsAdmin == true)
             {
-                case Pedal p:
-                    PedalActions.Display(prd.ProductId, ref err);
-                    break;
-                case Board b:
-                    BoardActions.Display(prd.ProductId, ref err);
-                    break;
-                case Component c:
-                    ComponentActions.Display(prd.ProductId, ref err);
-                    break;
-                default:
-                    break;
+                try
+                {
+                    using (var context = new OPDdbContext())
+                    {
+                        Product p = new Pedal()
+                        {
+                            ProductName = productName,
+                            ProductPrice = productPrice,
+                            ProductType = ProductTypes.Pedal,
+                            EffectType = EffectType,
+                            PedalDescription = pedalDescr
+                        };
+
+                        context.Add<Product>(p);
+                        context.SaveChanges();
+                        err = "Product Added Successfully";
+                        return true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    err = e.Message;
+                    return false;
+                }
+            }
+            else
+            {
+                err = "You have no permission to perform this";
+                return false;
+            }
+
+        }
+
+        // Add function for Boards
+        public static bool AddProduct(string productName, double productPrice, ProductTypes productType, EffectTypes EffectType, double width, double height, ref string err)
+        {
+            if (Constants.SessionUser.IsAdmin == true)
+            {
+                try
+                {
+                    using (var context = new OPDdbContext())
+                    {
+                        Product p = new Board()
+                        {
+                            ProductName = productName,
+                            ProductPrice = productPrice,
+                            ProductType = ProductTypes.Board,
+                            EffectType = EffectType,
+                            BoardWidth = width,
+                            BoardHeight = height
+                        };
+
+                        context.Add<Product>(p);
+                        context.SaveChanges();
+                        err = "Product Added Successfully";
+                        return true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    err = e.Message;
+                    return false;
+                }
+            }
+            else
+            {
+                err = "You have no permission to perform this";
+                return false;
+            }
+
+
+        }
+
+        // Add function for Componentss
+        public static bool AddProduct(string productName, double productPrice, ProductTypes productType,
+                                        ComponentTypes ComponentType, int Quantity, ref string err, EffectTypes effectType = EffectTypes.Misc)
+        {
+            if (Constants.SessionUser.IsAdmin == true)
+            {
+                try
+                {
+                    using (var context = new OPDdbContext())
+                    {
+                        Product p = new Component()
+                        {
+                            ProductName = productName,
+                            ProductPrice = productPrice,
+                            ProductType = ProductTypes.Component,
+                            ComponentType = ComponentType,
+                            QuantityPerLot = Quantity,
+                            EffectType = effectType
+                        };
+
+                        context.Add<Product>(p);
+                        context.SaveChanges();
+                        err = "Product Added Successfully";
+                        return true;
+                    }
+                }
+                catch (Exception e)
+                {
+                    err = e.Message;
+                    return false;
+                }
+            }
+            else
+            {
+                err = "You have no permission to perform this";
+                return false;
+            }
+
+        }
+
+
+        // ** ** ** ** ** ** ** ** ** ** ** **
+        // ** Method overloads to editing products
+        // ** ** ** ** ** ** ** ** ** ** ** **
+
+        // Editing function for Pedals
+        public static bool EditProduct(int id, string ProductName, double ProductPrice, EffectTypes EffectType, string PedalDescription, ref string err)
+        {
+            if (Constants.SessionUser.IsAdmin == true)
+            {
+                if (!(ProductName == "") || Enum.IsDefined(typeof(EffectTypes), EffectType) || !(ProductPrice < 0))
+                {
+                    try
+                    {
+                        using (var context = new OPDdbContext())
+                        {
+                            var updatePedal = context.Pedals.Single(u => u.ProductId == id);
+
+                            //Verify user exist
+                            if (!(updatePedal == null))
+                            {
+                                //updateUser.EmailAddress = EmailAddress;
+                                updatePedal.ProductName = ProductName;
+                                updatePedal.ProductPrice = ProductPrice;
+                                updatePedal.EffectType = EffectType;
+                                updatePedal.PedalDescription = PedalDescription;
+
+                                context.SaveChanges();
+                                err = "Good. Pedal updated";
+                                return true;
+                            }
+                            else
+                            {
+                                err = "No such Pedal";
+                                return false;
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        err = "No Pedal with this ID";
+                        Console.WriteLine(e.Message);
+                        return false;
+                    }
+                }
+                else
+                {
+                    err = "Error in input data";
+                    return false;
+                }
+
+            }
+            else
+            {
+                err = "You have no permission to perform this";
+                return false;
+            }
+
+        }
+
+        // Editing function for Boards
+        public static bool EditProduct(int id, string ProductName, double ProductPrice, EffectTypes EffectType, double width, double height, ref string err)
+        {
+            if (Constants.SessionUser.IsAdmin == true)
+            {
+                if (!(ProductName == "") || Enum.IsDefined(typeof(EffectTypes), EffectType) || !(ProductPrice < 0))
+                {
+                    try
+                    {
+
+                        using (var context = new OPDdbContext())
+                        {
+                            var updateBoard = context.Boards.Single(u => u.ProductId == id);
+
+                            //Verify user exist
+                            if (!(updateBoard == null))
+                            {
+                                //updateUser.EmailAddress = EmailAddress;
+                                updateBoard.ProductName = ProductName;
+                                updateBoard.ProductPrice = ProductPrice;
+                                updateBoard.EffectType = EffectType;
+                                updateBoard.BoardWidth = width;
+                                updateBoard.BoardHeight = height;
+
+                                context.SaveChanges();
+                                err = "Good. Board updated";
+                                return true;
+                            }
+                            else
+                            {
+                                err = "No such Board";
+                                return false;
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        err = "No Board with this ID";
+                        Console.WriteLine(e.Message);
+                        return false;
+                    }
+                }
+                else
+                {
+                    err = "Fields data error";
+                    return false;
+                }
+
+            }
+            else
+            {
+                err = "You have no permission to perform this";
+                return false;
             }
         }
+
+        // Editing function for Components
+        public static bool EditProduct(int id, string ProductName, double ProductPrice, ComponentTypes ComponentType, int Quantity, ref string err)
+        {
+            if (Constants.SessionUser.IsAdmin == true)
+            {
+                if (!(ProductName == "") || Enum.IsDefined(typeof(ComponentTypes), ComponentType) || !(ProductPrice < 0))
+                {
+                    try
+                    {
+                        using (var context = new OPDdbContext())
+                        {
+
+                            var updateComponent = context.Components.Single(u => u.ProductId == id);
+
+                            //Verify user exist
+                            if (!(updateComponent == null))
+                            {
+                                //updateUser.EmailAddress = EmailAddress;
+                                updateComponent.ProductName = ProductName;
+                                updateComponent.ProductPrice = ProductPrice;
+                                updateComponent.ComponentType = ComponentType;
+                                updateComponent.QuantityPerLot = Quantity;
+
+
+                                context.SaveChanges();
+                                err = "Good. Component updated";
+                                return true;
+                            }
+                            else
+                            {
+                                err = "No such Component";
+                                return false;
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        err = e.Message;
+                        return false;
+                    }
+                }
+                else
+                {
+                    err = "Fields data error";
+                    return false;
+
+                }
+            }
+            else
+            {
+                err = "You have no permission to perform this";
+                return false;
+            }
+        }
+
     }
 }
+
+

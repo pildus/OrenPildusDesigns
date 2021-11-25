@@ -31,7 +31,11 @@ namespace DataControl.Model
         [Required]
         public string EmailAddress { get; set; }
 
-        public bool? IsAdmin { get; set; } = false;
+        public bool IsAdmin { get; set; } = false;
+
+        [ForeignKey ("UserType")]
+        public int User_UserTypeId { get; set; }
+        public UserType UserType { get; set; }
 
         public virtual List<Order> ShoppingCart { get; set; } = new List<Order>();
 

@@ -60,8 +60,9 @@ namespace OPD_GUI.UserControls
         {
             try
             {
-                Pedal p = (Pedal)ProductsDG.SelectedItem;
-                Product getP = ProductActions.GetProducts(p.ProductId);
+                var p = ProductsDG.SelectedItem.GetType();
+                MessageBox.Show(p.Name);
+                //Product getP = ProductActions.GetProducts(p.ProductId);
                 //List<Product> lst = (List<Product>)ProductsDG.ItemsSource;
 
             }
