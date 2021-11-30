@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:OPD_GUI.UserControls"
              Width="1180" Height="730" FontSize="20">
 
-    <TabControl Name="AdminTabControl" HorizontalAlignment="Center" >
+    <TabControl Name="AdminTabControl" HorizontalAlignment="Center" VerticalAlignment="Top">
 
     </TabControl>
 

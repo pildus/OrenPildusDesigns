@@ -9,19 +9,19 @@
 
 
 
-    
-    <Border CornerRadius="20" Width="1000" Height="600" VerticalAlignment="Center">
+
+    <Border CornerRadius="20" Width="Auto" Height="Auto" VerticalAlignment="Center">
         <!--<Border.Background>
             <ImageBrush ImageSource="/Images/adminbackground.jpg" Stretch="Fill" TileMode="None"/>
         </Border.Background>-->
-        <Grid ClipToBounds="True" Margin="20,20,20,20">
+        <Grid ClipToBounds="True" Margin="10,0,10,0" Name="RadioBtnGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="250"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <!--<ColumnDefinition Width="400"></ColumnDefinition>-->
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
+            <StackPanel Grid.Column="0" >
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type RadioButton}" >
                         <Setter Property="Template">
@@ -55,84 +55,174 @@
                     </Style>
                 </StackPanel.Resources>
 
+                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" TextAlignment="Center">
+                    Choose Product Type
 
+                </TextBlock>
                 <RadioButton Name="AllProductsBtn" GroupName="ProductsBtn" Content="All Products" Checked="RadioButton_Checked" />
                 <RadioButton GroupName="ProductsBtn" Content="Pedal" Checked="RadioButton_Checked" />
                 <RadioButton GroupName="ProductsBtn" Content="Board"  Checked="RadioButton_Checked"/>
                 <RadioButton GroupName="ProductsBtn" Content="Component" Checked="RadioButton_Checked" />
-                <Separator>                </Separator>
-                <Button IsEnabled="{Binding ElementName=ProductsDG, Path=SelectedItem}"
-                    Name="saveChangesBtn" Content="Save Changes" Click="saveChangesBtn_Click"></Button>
-                <StackPanel x:Name="EditProduct"  Margin="0,30,0,0">
-                    <TextBox Text="{Binding SelectedItem.ProductName, ElementName=ProductsDG}"/>
-                </StackPanel>
+                <Separator Height="30"></Separator>
+
+
+                <!-- Edit Product-->
+                <Border  Grid.Column="2" Background="Silver" CornerRadius="10" BorderThickness="1.5"
+                Margin="0,0,0,0"      BorderBrush="Black">
+                    <StackPanel Name="EditProductStck">
+                        <Label Content="Edit New Product"  HorizontalAlignment="Center" Foreground="Green"/>
+                        <Grid Name="EditProductGrid" >
+                            <Grid.Resources>
+                                <Style TargetType="TextBox">
+                                    <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                                    <Setter Property="Margin" Value="0,10,0,0"></Setter>
+                                    <Setter Property="FontSize" Value="12"></Setter>
+                                </Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="Margin" Value="0,10,0,0"></Setter>
+                                    <Setter Property="FontSize" Value="10"></Setter>
+                                </Style>
+                                <Style TargetType="RadioButton">
+                                    <Setter Property="Margin" Value="0,10,0,0"></Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="250"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Product Name :" Grid.Column="0" Grid.Row="0"  ></Label>
+                            <TextBox Name="EditProductName" Text="" Width="120" Grid.Column="1" Grid.Row="0" />
+
+                            <Label Content="Product Price :" Grid.Column="0" Grid.Row="1"></Label>
+                            <TextBox Name="EditProducPrice" PreviewTextInput="NumberValidationTextBox" Text="" Width="120" Grid.Column="1" Grid.Row="1" />
+
+                            <Label Content="Pedal Description" Grid.Column="0"  Grid.Row="2"></Label>
+                            <TextBox IsEnabled="False" Grid.Column="1" Grid.Row="2" Name="EditPedalDescription" Text="Description" Width="120"></TextBox>
+
+                            <Label Grid.Column="0"  Grid.Row="3" Content="Board Dimensions:"></Label>
+                            <TextBlock Name="EditDimensionBlck" IsEnabled="False" Grid.Row="3" Grid.Column="1">
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  Name="EditBoardWidth" Text="W" Width="30"
+                             ></TextBox>                    
+                    X
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  Name="EditBoardHeight" Text="H" Width="30" 
+                             ></TextBox>
+                            </TextBlock>
+
+
+                            <Label Content="QTY/Lot" Grid.Column="0"  Grid.Row="4"></Label>
+                            <TextBox IsEnabled="False" Grid.Row="4" Grid.Column="1"  Name="EditQuantity" Text="Qty/Lot" Width="120"
+                         PreviewTextInput="NumberValidationTextBox"   ></TextBox>
+
+                            <Label Content="Effect Type :" Grid.Column="0" Grid.Row="5"></Label>
+                            <ComboBox Height="20" Name="EditEffectTypeCmb" Grid.Row="5" 
+                             HorizontalAlignment="Left" Grid.Column="1" Width="140" ></ComboBox>
+                            <Label Content="Component Type :" Grid.Column="0" Grid.Row="6"></Label>
+                            <ComboBox Height="20" Name="EditComponentTypeCmb" Grid.Row="6" IsEnabled="{Binding IsChecked, ElementName=ComonentPTRadio}"
+                             HorizontalAlignment="Left" Grid.Column="1" Width="140" ></ComboBox>
+                        </Grid>
+                        <Separator Margin="0,10,0,0"></Separator>
+
+                        <Button Margin="0,0,0,10" x:Name="EditProductBtn" Width="150" Height="30" Content="Edit Product" Click="EditProductBtn_Click"></Button>
+                    </StackPanel>
+                </Border>
+                <!-- End Edit Product-->
+
+
+
             </StackPanel>
             <DataGrid Width="Auto" Height="Auto" Opacity="0.7" Grid.Column="1" x:Name="ProductsDG" AutoGenerateColumns="True" CanUserAddRows="False"
-                          CanUserDeleteRows="False" ItemsSource="{Binding Source=lst}" 
-                          FontSize="11"   FontFamily="Arial">
+                Margin="50,0,0,0" MouseDown="dataGrid_MouseDownClick"  CanUserDeleteRows="False" ItemsSource="{Binding Source=lst}" 
+                IsReadOnly="True" FontSize="11"   FontFamily="Arial">
             </DataGrid>
 
+            <!-- Add New Product-->
+            <Border  Grid.Column="2" Background="Silver" CornerRadius="10" BorderThickness="1.5"
+                Margin="20,0,0,0"      BorderBrush="Black">
+                <StackPanel Name="AddProductStck">
+                    <Label Content="Add New Product"  HorizontalAlignment="Center" Foreground="Green"/>
+                    <Grid Name="AddProductGrid">
+                        <Grid.Resources>
+                            <Style TargetType="TextBox">
+                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                                <Setter Property="Margin" Value="0,10,0,0"></Setter>
+                            </Style>
+                            <Style TargetType="Label">
+                                <Setter Property="Margin" Value="0,10,0,0"></Setter>
+                            </Style>
+                            <Style TargetType="RadioButton">
+                                <Setter Property="Margin" Value="0,10,0,0"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
 
-            <StackPanel x:Name="AddProduct" Grid.Column="2" Margin="20,10,0,0">
-                <Label Content="Add New Product"  HorizontalAlignment="Center" Foreground="Green"/>
-                <Grid>
-                    <Grid.Resources>
-                        <Style TargetType="TextBox">
-                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                            <Setter Property="Margin" Value="0,10,0,0"></Setter>
-                        </Style>
-                        <Style TargetType="Label">
-                            <Setter Property="Margin" Value="0,10,0,0"></Setter>
-                        </Style>
-                        <Style TargetType="RadioButton">
-                            <Setter Property="Margin" Value="0,10,0,0"></Setter>
-                        </Style>
-                    </Grid.Resources>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="150"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                
-                <Label Content="Product Name :" Grid.Column="0" Grid.Row="0"  ></Label>
-                <TextBox Text="" Width="100" Grid.Column="1" Grid.Row="0" />
+                        <Label Content="Product Name :" Grid.Column="0" Grid.Row="0"  ></Label>
+                        <TextBox Name="AddProductName" Text="" Width="120" Grid.Column="1" Grid.Row="0" />
 
-                <Label Content="Product Price :" Grid.Column="0" Grid.Row="1"></Label>
-                <TextBox Text="" Width="100" Grid.Column="1" Grid.Row="1" />
+                        <Label Content="Product Price :" Grid.Column="0" Grid.Row="1"></Label>
+                        <TextBox Name="AddProducPrice" PreviewTextInput="NumberValidationTextBox" Text="" Width="120" Grid.Column="1" Grid.Row="1" />
 
-                    <RadioButton Grid.Row="2" Grid.Column="0" Name="PedalPTRadio" Content="Pedal" GroupName="AddPT"></RadioButton>
-                    <TextBox Grid.Column="1" Grid.Row="2" Name="PedalDescription" Text="Description" Width="100"
+                        <RadioButton Grid.Row="2" Grid.Column="0" Name="PedalPTRadio" Content="Pedal" GroupName="AddPT"></RadioButton>
+                        <TextBox Grid.Column="1" Grid.Row="2" Name="AddPedalDescription" Text="Description" Width="120"
                              IsEnabled="{Binding IsChecked, ElementName=PedalPTRadio}"></TextBox>
 
-                    <RadioButton Grid.Row="3" Grid.Column="0" Name="BoardPTRadio" Content="Board" GroupName="AddPT"></RadioButton>
-                    <TextBlock Grid.Row="3" Grid.Column="1">
-                    <TextBox  Name="BoardWidth" Text="Width" Width="25"
+                        <RadioButton Grid.Row="3" Grid.Column="0" Name="BoardPTRadio" Content="Board" GroupName="AddPT"></RadioButton>
+                        <TextBlock Grid.Row="3" Grid.Column="1">
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  Name="AddBoardWidth" Text="W" Width="30"
                              IsEnabled="{Binding IsChecked, ElementName=BoardPTRadio}"></TextBox>                    
                     X
-                    <TextBox  Name="BoardHeight" Text="Height" Width="25" 
+                    <TextBox PreviewTextInput="NumberValidationTextBox"  Name="AddBoardHeight" Text="H" Width="30" 
                              IsEnabled="{Binding IsChecked, ElementName=BoardPTRadio}"></TextBox>
-                    </TextBlock>
+                        </TextBlock>
 
 
-                    <RadioButton Grid.Row="4" Grid.Column="0"  Name="ComonentPTRadio" Content="Component" GroupName="AddPT"></RadioButton>
-                    <TextBox Grid.Row="4" Grid.Column="1"  Name="Quantity" Text="Qty/Lot" Width="90"
-                             IsEnabled="{Binding IsChecked, ElementName=ComonentPTRadio}"></TextBox>                    
-                
-                </Grid>
-                <Separator Margin="0,20,0,0"></Separator>
-                <Image PreviewMouseLeftButtonDown="ProductImg_Click" Margin="0,10,0,10" Name="ProductImg" Source="/images/blank.jpg" Width="200" Height="250"></Image>
-                <Separator Margin="0,20,0,10"></Separator>
-                
-                <Button x:Name="AddProductBtn" Width="150" Height="30" Content="Add Product" Click="AddProductBtn_Click"></Button>
-            </StackPanel>
+                        <RadioButton Grid.Row="4" Grid.Column="0"  Name="ComonentPTRadio" Content="Component" GroupName="AddPT"></RadioButton>
+                        <TextBox Grid.Row="4" Grid.Column="1"  Name="AddQuantity" Text="Qty/Lot" Width="120"
+                         PreviewTextInput="NumberValidationTextBox"    IsEnabled="{Binding IsChecked, ElementName=ComonentPTRadio}"></TextBox>
 
+                        <Label Content="Effect Type :" Grid.Column="0" Grid.Row="5"></Label>
+                        <ComboBox Height="20" Name="EffectTypeCmb" Grid.Row="5" 
+                             HorizontalAlignment="Left" Grid.Column="1" Width="120" ></ComboBox>
+                        <Label Content="Component Type :" Grid.Column="0" Grid.Row="6"></Label>
+                        <ComboBox Height="20" Name="ComponentTypeCmb" Grid.Row="6" IsEnabled="{Binding IsChecked, ElementName=ComonentPTRadio}"
+                             HorizontalAlignment="Left" Grid.Column="1" Width="120" ></ComboBox>
+                        <Label Content="Initial Inventory :" Grid.Column="0" Grid.Row="7"></Label>
+                        <TextBox Grid.Row="7" Grid.Column="1"  Name="AddInventoryTxt" Text="1" Width="50"
+                         PreviewTextInput="NumberValidationTextBox" TextAlignment="Center" ></TextBox>
+                    </Grid>
+                    <Separator Margin="0,20,0,0"></Separator>
+                    <Image PreviewMouseLeftButtonDown="ProductImg_Click" Margin="0,10,0,10" Name="ProductImg" Source="/images/blank.jpg" Width="100"
+                       Height="150"></Image>
+                    <Separator Margin="0,20,0,10"></Separator>
+
+                    <Button x:Name="AddProductBtn" Width="150" Height="30" Content="Add Product" Click="AddProductBtn_Click"></Button>
+                </StackPanel>
+            </Border>
+            <!-- End Add New Product-->
         </Grid>
     </Border>
-
+    
 </UserControl>

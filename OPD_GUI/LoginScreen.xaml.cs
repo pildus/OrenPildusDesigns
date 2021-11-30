@@ -25,6 +25,7 @@ namespace OPD_GUI
         public LoginScreen()
         {
             InitializeComponent();
+            PopulateDB.CheckDBExist();
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)

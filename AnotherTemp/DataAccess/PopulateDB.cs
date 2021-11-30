@@ -12,7 +12,21 @@ namespace DataControl.DataAccess
 {
     public static class PopulateDB
     {
-        public static void PopulateAll()
+        public static bool CheckDBExist()
+        {
+            using (var context = new OPDdbContext())
+            {
+                if (!context.Database.CanConnect())
+                {
+                    context.Database.Migrate();
+                    PopulateAll();
+                }
+
+                return true;
+            }
+        }
+
+        private static void PopulateAll()
         {
             string err = "";
             Constants.SessionUser.IsAdmin = true;
@@ -139,7 +153,7 @@ namespace DataControl.DataAccess
             Console.WriteLine(err);
             InventoryItemActions.AddInventoryItem(21, 10, ref err, 40);
             Console.WriteLine(err);
-            ProductActions.AddProduct("LM13600", 50, ProductTypes.Component, ComponentTypes.IC, 3, ref err);
+            ProductActions.AddProduct("LM13600", 50, ProductTypes.Component, ComponentTypes.IC, 3, ref err,EffectTypes.Phaser);
             Console.WriteLine(err);
             InventoryItemActions.AddInventoryItem(22, 4, ref err, 40);
             Console.WriteLine(err);

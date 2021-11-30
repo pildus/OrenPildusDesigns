@@ -16,7 +16,7 @@ namespace DataControl
     {
         static void Main(string[] args)
         {
-           PopulateDB.PopulateAll();
+          // PopulateDB.PopulateAll();
         }
     }
 }

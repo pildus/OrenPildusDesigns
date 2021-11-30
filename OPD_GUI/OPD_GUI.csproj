@@ -7,17 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Images\Board\**" />
-    <Compile Remove="Images\Pedal\**" />
-    <EmbeddedResource Remove="Images\Board\**" />
-    <EmbeddedResource Remove="Images\Pedal\**" />
-    <None Remove="Images\Board\**" />
-    <None Remove="Images\Pedal\**" />
-    <Page Remove="Images\Board\**" />
-    <Page Remove="Images\Pedal\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="UserControls\BoardDisplay.xaml.cs" />
     <Compile Remove="UserControls\ComponentDisplay.xaml.cs" />
     <Compile Remove="UserControls\PedalDisplay.xaml.cs" />
@@ -26,39 +15,22 @@
   <ItemGroup>
     <None Remove="Fonts\Arc.ttf" />
     <None Remove="Fonts\Bebas.ttf" />
-    <None Remove="Images\adminbackground.jpg" />
-    <None Remove="Images\background.jpg" />
-    <None Remove="Images\blank.jpg" />
-    <None Remove="Images\board.png" />
-    <None Remove="Images\component.png" />
-    <None Remove="Images\delete.png" />
-    <None Remove="Images\exit.png" />
-    <None Remove="Images\home.png" />
-    <None Remove="Images\logo.png" />
-    <None Remove="Images\logo2.png" />
-    <None Remove="Images\logout2.png" />
-    <None Remove="Images\logo_small.png" />
-    <None Remove="Images\mainbackground.jpg" />
-    <None Remove="Images\pedal.png" />
-    <None Remove="Images\Products\1.jpg" />
-    <None Remove="Images\Products\10.jpg" />
-    <None Remove="Images\Products\11.jpg" />
-    <None Remove="Images\Products\12.jpg" />
-    <None Remove="Images\Products\13.jpg" />
-    <None Remove="Images\Products\2.jpg" />
-    <None Remove="Images\Products\21.jpg" />
-    <None Remove="Images\Products\22.jpg" />
-    <None Remove="Images\Products\23.jpg" />
-    <None Remove="Images\Products\24.jpg" />
-    <None Remove="Images\Products\25.jpg" />
-    <None Remove="Images\Products\3.jpg" />
-    <None Remove="Images\Products\4.jpg" />
-    <None Remove="Images\Products\5.jpg" />
-    <None Remove="Images\Products\6.jpg" />
-    <None Remove="Images\Products\7.jpg" />
-    <None Remove="Images\Products\8.jpg" />
-    <None Remove="Images\Products\9.jpg" />
-    <None Remove="Images\ShoppingCart.png" />
+    <None Remove="images\adminbackground.jpg" />
+    <None Remove="images\background.jpg" />
+    <None Remove="images\blank.jpg" />
+    <None Remove="images\board.png" />
+    <None Remove="images\component.png" />
+    <None Remove="images\delete.png" />
+    <None Remove="images\Design_Option1.psd" />
+    <None Remove="images\exit.png" />
+    <None Remove="images\home.png" />
+    <None Remove="images\logo.png" />
+    <None Remove="images\logo2.png" />
+    <None Remove="images\logout2.png" />
+    <None Remove="images\logo_small.png" />
+    <None Remove="images\mainbackground.jpg" />
+    <None Remove="images\pedal.png" />
+    <None Remove="images\ShoppingCart.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -89,103 +61,52 @@
   <ItemGroup>
     <Resource Include="Fonts\Arc.ttf" />
     <Resource Include="Fonts\Bebas.ttf" />
-    <Resource Include="Images\adminbackground.jpg">
+    <Resource Include="images\adminbackground.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\background.jpg">
+    <Resource Include="images\background.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\blank.jpg">
+    <Resource Include="images\blank.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\board.png">
+    <Resource Include="images\board.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\component.png">
+    <Resource Include="images\component.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\delete.png">
+    <Resource Include="images\delete.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\exit.png">
+    <Resource Include="images\Design_Option1.psd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\home.png">
+    <Resource Include="images\exit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\logo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\logo2.png">
+    <Resource Include="images\home.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\logout2.png">
+    <Resource Include="images\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\logo_small.png">
+    <Resource Include="images\logo2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\mainbackground.jpg">
+    <Resource Include="images\logout2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\pedal.png">
+    <Resource Include="images\logo_small.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Products\1.jpg">
+    <Resource Include="images\mainbackground.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Products\10.jpg">
+    <Resource Include="images\pedal.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Products\11.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\12.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\13.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\2.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\21.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\22.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\23.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\24.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\25.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\3.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\4.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\5.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\6.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\7.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\8.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\Products\9.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\ShoppingCart.png">
+    <Resource Include="images\ShoppingCart.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

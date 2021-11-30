@@ -233,7 +233,7 @@ namespace DataControl.Utils
         // ** ** ** ** ** ** ** ** ** ** ** **
 
         // Add function for Pedals
-        public static bool AddProduct(string productName, double productPrice, ProductTypes productType, EffectTypes EffectType, string pedalDescr, ref string err)
+        public static int AddProduct(string productName, double productPrice, ProductTypes productType, EffectTypes EffectType, string pedalDescr, ref string err)
         {
             if (Constants.SessionUser.IsAdmin == true)
             {
@@ -245,7 +245,7 @@ namespace DataControl.Utils
                         {
                             ProductName = productName,
                             ProductPrice = productPrice,
-                            ProductType = ProductTypes.Pedal,
+                            ProductType = productType,
                             EffectType = EffectType,
                             PedalDescription = pedalDescr
                         };
@@ -253,25 +253,25 @@ namespace DataControl.Utils
                         context.Add<Product>(p);
                         context.SaveChanges();
                         err = "Product Added Successfully";
-                        return true;
+                        return p.ProductId;
                     }
                 }
                 catch (Exception e)
                 {
                     err = e.Message;
-                    return false;
+                    return 0;
                 }
             }
             else
             {
                 err = "You have no permission to perform this";
-                return false;
+                return 0;
             }
 
         }
 
         // Add function for Boards
-        public static bool AddProduct(string productName, double productPrice, ProductTypes productType, EffectTypes EffectType, double width, double height, ref string err)
+        public static int AddProduct(string productName, double productPrice, ProductTypes productType, EffectTypes EffectType, double width, double height, ref string err)
         {
             if (Constants.SessionUser.IsAdmin == true)
             {
@@ -292,26 +292,26 @@ namespace DataControl.Utils
                         context.Add<Product>(p);
                         context.SaveChanges();
                         err = "Product Added Successfully";
-                        return true;
+                        return p.ProductId;
                     }
                 }
                 catch (Exception e)
                 {
                     err = e.Message;
-                    return false;
+                    return 0;
                 }
             }
             else
             {
                 err = "You have no permission to perform this";
-                return false;
+                return 0;
             }
 
 
         }
 
         // Add function for Componentss
-        public static bool AddProduct(string productName, double productPrice, ProductTypes productType,
+        public static int AddProduct(string productName, double productPrice, ProductTypes productType,
                                         ComponentTypes ComponentType, int Quantity, ref string err, EffectTypes effectType = EffectTypes.Misc)
         {
             if (Constants.SessionUser.IsAdmin == true)
@@ -333,19 +333,19 @@ namespace DataControl.Utils
                         context.Add<Product>(p);
                         context.SaveChanges();
                         err = "Product Added Successfully";
-                        return true;
+                        return p.ProductId;
                     }
                 }
                 catch (Exception e)
                 {
                     err = e.Message;
-                    return false;
+                    return 0;
                 }
             }
             else
             {
                 err = "You have no permission to perform this";
-                return false;
+                return 0;
             }
 
         }
@@ -467,7 +467,7 @@ namespace DataControl.Utils
         }
 
         // Editing function for Components
-        public static bool EditProduct(int id, string ProductName, double ProductPrice, ComponentTypes ComponentType, int Quantity, ref string err)
+        public static bool EditProduct(int id, string ProductName, double ProductPrice, ComponentTypes ComponentType, int Quantity, ref string err,EffectTypes et = EffectTypes.Misc)
         {
             if (Constants.SessionUser.IsAdmin == true)
             {
@@ -488,7 +488,7 @@ namespace DataControl.Utils
                                 updateComponent.ProductPrice = ProductPrice;
                                 updateComponent.ComponentType = ComponentType;
                                 updateComponent.QuantityPerLot = Quantity;
-
+                                updateComponent.EffectType = et;
 
                                 context.SaveChanges();
                                 err = "Good. Component updated";
