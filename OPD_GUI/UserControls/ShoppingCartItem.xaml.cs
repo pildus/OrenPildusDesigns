@@ -31,7 +31,8 @@ namespace OPD_GUI.UserControls
             Product p = ProductActions.GetProducts(o);
 
             ProductImage.Tag = o.OrderID.ToString();
-            ProductImage.Source = new BitmapImage(new Uri("/images/Products/" + p.ProductId + ".jpg", UriKind.Relative));
+            //ProductImage.Source = new BitmapImage(new Uri("/images/Products/" + p.ProductId + ".jpg", UriKind.Relative));
+            ProductImage.Source = new BitmapImage(new Uri("http://pildus-001-site1.gtempurl.com/images/Products/" + p.ProductId + ".jpg", UriKind.Absolute));
             ProductName.Text = p.ProductName;
             ProductPrice.Text = p.ProductPrice.ToString() + c.ToString();
             OrderQuantity.Text = o.OrderQuantity.ToString();

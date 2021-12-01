@@ -16,19 +16,6 @@ namespace DataControl.Utils
         // Validation of emal address
         public static bool EmailValidation(string userEmail)
         {
-            //if (userEmail.Trim().EndsWith("."))
-            //{
-            //    return false; // suggested by @TK-421
-            //}
-            //try
-            //{
-            //    var addr = new System.Net.Mail.MailAddress(userEmail);
-            //    return addr.Address == userEmail;
-            //}
-            //catch
-            //{
-            //    return false;
-            //}
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(userEmail);
             if (match.Success)
@@ -37,7 +24,6 @@ namespace DataControl.Utils
                 return false;
         }
     
-
         // Validation of password length, charachters(Uppercase , numeric, and symbol)
         public static bool Validate_Password_Params(string pass)
         {

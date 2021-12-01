@@ -207,6 +207,8 @@ namespace DataControl.Utils
                 }
         }
 
+
+        // Creating the system's user types
         public static bool CreateUserType(string desc , ref string err)
         {
             try

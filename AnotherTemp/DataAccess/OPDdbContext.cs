@@ -28,35 +28,34 @@ namespace DataControl.DataAccess
             if (!optionsBuilder.IsConfigured)
             {
 
+                // * * Local SQLServer DB
                 optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=OrenPildusDesignsDB;Trusted_Connection=True;MultipleActiveResultSets=true");
+                
+                
+                // * * Online hosted SQLServer DB * * //
+                // * * In case the local DB fails to work uncomment this connection string:
                 //optionsBuilder.UseSqlServer("Server=SQL5080.site4now.net; Initial Catalog = db_a7c69f_pildus; User Id = db_a7c69f_pildus_admin; Password =Leviha2016!");
-                // .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+                
 
             }
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            // Verify a unique usage of an email address in sign up
             builder.Entity<User>()
                 .HasIndex(u => u.EmailAddress)
                 .IsUnique();
 
-            builder.Entity<InventoryItem>()
-                .HasIndex(i => i.InventoryItemProductID)
-                .IsUnique();
-
+            // Verify new sign up does not gran administator permissions
             builder.Entity<User>()
             .Property("IsAdmin")
             .HasDefaultValue(false);
 
+            // Define relations of User's shopping cart object
             builder.Entity<Order>()
            .HasOne<User>(s => s.User)
            .WithMany(g => g.ShoppingCart);
-
-
-            //builder.Entity<User>().HasMany(u => u.ShoppingCart);
-
-
 
         }
 

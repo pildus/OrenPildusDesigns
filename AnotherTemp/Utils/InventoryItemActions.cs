@@ -18,7 +18,7 @@ namespace DataControl.Utils
         // ** only admin user permitted.
         public static bool AddInventoryItem(int ProductId, int Quantity, ref string err, double SpecialPrice = 0)
         {
-            if (Constants.SessionUser.IsAdmin == true)
+            if (Constants.SessionUser.IsAdmin == true) // Verifying Admin permission
             {
                 try
                 {
@@ -32,13 +32,18 @@ namespace DataControl.Utils
                             InentoryItemQuantity = Quantity,
                         };
 
+                        // with optional parmeter, admin can set a discount or special sale for a product
+                        // if default (0), the product price stays in tact.
                         if (SpecialPrice > 0)
-                            inv.InventoryItemSpecialPrice = SpecialPrice;
+                            inv.InventoryItemSpecialPrice = SpecialPrice; 
                         else
                             inv.InventoryItemSpecialPrice = p.ProductPrice;
 
+
+
                         context.Add<InventoryItem>(inv);
                         context.SaveChanges();
+                        
                         err = "Inventory Item Added Successfully";
                         return true;
                     }
@@ -59,7 +64,7 @@ namespace DataControl.Utils
     
 
         //Method to change product's inventory
-        // ** To be used for orders commited or returned.
+        // ** To be used for orders confirmed or returned/refunded by an Admin.
         public static bool ChangeInventoryItemQuantity(int InventoryItemProductID, ref string err,  int NewQuantity)
         {
             try
@@ -101,11 +106,8 @@ namespace DataControl.Utils
                     }
                     else
                     {
-                       // err = "No inventory exist for this product ID";
                         return -100;
                     }
-
-                    
                 }
             }
             catch

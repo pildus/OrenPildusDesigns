@@ -70,7 +70,7 @@
                 <Border  Grid.Column="2" Background="Silver" CornerRadius="10" BorderThickness="1.5"
                 Margin="0,0,0,0"      BorderBrush="Black">
                     <StackPanel Name="EditProductStck">
-                        <Label Content="Edit New Product"  HorizontalAlignment="Center" Foreground="Green"/>
+                        <Label Content="Edit Product"  HorizontalAlignment="Center" Foreground="Green"/>
                         <Grid Name="EditProductGrid" >
                             <Grid.Resources>
                                 <Style TargetType="TextBox">

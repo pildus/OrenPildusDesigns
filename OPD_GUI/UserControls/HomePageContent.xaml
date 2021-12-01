@@ -25,8 +25,18 @@
         </Image>
  
         <DockPanel Height="45" Margin="0,-350,0,0">
-            <Label DockPanel.Dock="left" Content="Get A Glimps in some random prpducts..."/>
-            <Separator/>
+            <!--<Label DockPanel.Dock="left" Content="Get A Glimpse in some random products"/>-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition ></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Separator Grid.Column="0" />
+                    <Label Content="Get A Glimpse in some random products"  Grid.Column="1" HorizontalAlignment="Center"  />
+                    <Separator Grid.Column="2" />
+                </Grid>
+            
         </DockPanel>
         </StackPanel>
 

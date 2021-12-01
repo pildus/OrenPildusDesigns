@@ -12,26 +12,35 @@ namespace DataControl.DataAccess
 {
     public static class PopulateDB
     {
+        // Verify if the DB exists and can be connected to.
         public static bool CheckDBExist()
         {
-            using (var context = new OPDdbContext())
+            try
             {
-                if (!context.Database.CanConnect())
+                using (var context = new OPDdbContext())
                 {
-                    context.Database.Migrate();
-                    PopulateAll();
-                }
+                    if (!context.Database.CanConnect()) //DB is not accessible
+                    {
+                        context.Database.Migrate(); //Apply migration
+                        PopulateAll(); //Populate the DB with initial data
+                    }
 
-                return true;
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
 
+        //Populate the DB with initial data (Users, Products, Inventory)
         private static void PopulateAll()
         {
             string err = "";
             Constants.SessionUser.IsAdmin = true;
 
-            // ClearData();
+            
             #region CreateUserTypes
             UserActions.CreateUserType("Admin", ref err);
             Console.WriteLine(err);
@@ -183,51 +192,5 @@ namespace DataControl.DataAccess
             Console.WriteLine(err);
             #endregion
         }
-
-        //private static void ClearData()
-        //{
-        //    using (var context = new OPDdbContext())
-        //    {
-        //        var users = context.Users.ToList();
-        //        context.RemoveRange(users);
-        //        context.SaveChanges();
-        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('Users', RESEED, 0)"); //Reset AUTO_INCREMENT
-
-        //        var products = context.Products.ToList();
-        //        context.RemoveRange(products);
-        //        context.SaveChanges();
-        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('products', RESEED, 0)"); //Reset AUTO_INCREMENT
-        //                                                                                  //
-        //        var Pedals = context.Pedals.ToList();
-        //        context.RemoveRange(Pedals);
-        //        context.SaveChanges();
-                
-
-        //        var Boards = context.Boards.ToList();
-        //        context.RemoveRange(Boards);
-        //        context.SaveChanges();
-                
-
-        //        var Components = context.Components.ToList();
-        //        context.RemoveRange(Components);
-        //        context.SaveChanges();
-                
-
-
-        //        var Inventory = context.Inventory.ToList();
-        //        context.RemoveRange(Inventory);
-        //        context.SaveChanges();
-        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('Inventory', RESEED, 0)"); //Reset AUTO_INCREMENT
-
-        //        var Orders = context.Orders.ToList();
-        //        context.RemoveRange(Orders);
-        //        context.SaveChanges();
-        //        context.Database.ExecuteSqlRaw("DBCC CHECKIDENT('Orders', RESEED, 0)"); //Reset AUTO_INCREMENT
-
-
-        //    }
-        //}
     }
-
-
 }

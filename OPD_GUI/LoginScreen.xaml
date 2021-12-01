@@ -20,7 +20,7 @@
             <TextBox Name="txtEmail" Text="" Background="#545d6a" Foreground="White" FontSize="18" />
             <Label Content="Password"  Foreground="White" FontSize="14" Margin="0"/>
             <PasswordBox Name="txtPassword" Password=""  Background="#545d6a" Foreground="White" FontSize="18"/>
-            <TextBlock FontSize="8" Height="30" TextAlignment="Center" Margin="0,5,0,0" HorizontalAlignment="Center" 
+            <TextBlock FontSize="11" Height="50" TextAlignment="Center" Margin="0,5,0,0" HorizontalAlignment="Center" 
                        VerticalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="Password must be at leat 8 charachters, min 1 Uppercase [A-Z],min 1 number [0-9], min 1 symbol [~-?]" />
 
             <Button Content="Login" 

@@ -59,8 +59,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\Arc.ttf" />
-    <Resource Include="Fonts\Bebas.ttf" />
+    <Resource Include="Fonts\Arc.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Bebas.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\adminbackground.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

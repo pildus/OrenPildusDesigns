@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
 
-        <Border Name="MyDetails" Grid.Column="0" Grid.Row="0" Height="300" Width="350" Margin="20,20,20,20" 
+        <Border Name="MyDetails" Grid.Column="0" Grid.Row="0" Height="300" Width="250" Margin="20,20,20,20" 
                Background="AliceBlue" CornerRadius="30" VerticalAlignment="Top">
 
 
@@ -30,7 +30,7 @@
                         <Setter Property="TextBlock.Width" Value="200" ></Setter>
                     </Style>
                 </StackPanel.Resources>
-
+                <Label Content="My Details" HorizontalAlignment="Center" Foreground="Green"></Label>
                 <Label Content="First Name"></Label>
                 <TextBox Name="fName" Text="First Name"></TextBox>
                 <Label Content="Last Name" ></Label>
@@ -46,7 +46,8 @@
         </Border>
 
 
-        <Border Name="MyPassword" Grid.Column="1" Grid.Row="0" Height="300" Width="350" Margin="20,20,20,20" 
+        <Border Name="MyPassword" Grid.Column="1" Grid.Row="0" Height="300" Width="250
+                " Margin="20,20,20,20" 
                Background="AliceBlue" CornerRadius="30" VerticalAlignment="Top">
 
 
@@ -58,6 +59,7 @@
                         <Setter Property="TextBlock.Width" Value="200" ></Setter>
                     </Style>
                 </StackPanel.Resources>
+                <Label Content="My Password" HorizontalAlignment="Center" Foreground="Green"></Label>
                 <Label Content="Current Password"></Label>
                 <PasswordBox Name="CurPass" ></PasswordBox>
 
@@ -76,32 +78,40 @@
         </Border>
 
         <Border Name="MyOrders" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
-                Height="300" Width="Auto" Margin="20,20,20,20" 
+                Height="300" Width="700" Margin="20,20,20,20" 
                Background="AliceBlue" CornerRadius="30" VerticalAlignment="Top">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Margin="10,10,10,10">
-                    <Label Content="Pick start Date :"></Label>
-                    <DatePicker Name="startDate"></DatePicker>
-                    <Label Content="Pick end Date :"></Label>
-                    <DatePicker Name="endDate"></DatePicker>
-                    <Button Margin="0,5,0,5" Name="filterByDates" Content="Filter By Dates" Click="filterByDates_Click"></Button>
-                    
-                    <Separator></Separator>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="My Orders" HorizontalContentAlignment="Center"
+                   Foreground="Green"    FontSize="26"></Label>
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <StackPanel Margin="10,10,10,10">
+                        <Label Content="Pick start Date :"></Label>
+                        <DatePicker Name="startDate"></DatePicker>
+                        <Label Content="Pick end Date :"></Label>
+                        <DatePicker Name="endDate"></DatePicker>
+                        <Button Margin="0,5,0,5" Name="filterByDates" Content="Filter By Dates" Click="filterByDates_Click"></Button>
 
-                    <Button Margin="0,5,0,5" Name="resetFilters" Content="Reset Filter" Click="resetFilter_Click"></Button>
+                        <Separator></Separator>
 
-                </StackPanel>
-                
-                <Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="Black" />
-                <DataGrid Height="Auto" Width="Auto" HorizontalAlignment="Center" 
+                        <Button Margin="0,5,0,5" Name="resetFilters" Content="Reset Filter" Click="resetFilter_Click"></Button>
+
+                    </StackPanel>
+
+                    <Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="Black" />
+                    <DataGrid Height="Auto" Width="Auto" HorizontalAlignment="Center" 
                       Name="OrderDG" Margin="20,20,20,20" FontSize="14">
-                <DataGrid.RowStyle>
-                    <Style TargetType="DataGridRow">
-                        <Setter Property="IsHitTestVisible" Value="False"/>
-                    </Style>
-                </DataGrid.RowStyle>
-            </DataGrid>
-            </StackPanel>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="IsHitTestVisible" Value="False"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
+                </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>

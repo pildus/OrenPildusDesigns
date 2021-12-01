@@ -13,8 +13,21 @@ using System.Net.Mail;
 
 namespace DataControl.Utils
 {
+    // * * This class is used to extract the full data of an order, generating reflections of the entities related to the order,
+    // through wich any property can be accessed
+    public class ComplexOrder
+    {
+        public Order cOrder { get; set; }
+        public Product cProduct { get; set; }
+        public InventoryItem cinventoryItem { get; set; }
+        public User cUser { get; set; }
+    }
+
     public static class OrdersActions
     {
+
+        //Adding an order for a specific user, and a specific inventory item - related to specific product
+        // Isconfirmed is used for immidiate order ("Buy Now" option - not implemented in GUI), or for future order (Shopping cart option)
         public static bool AddOrder(int UserId, int InventoryItemProductID, int Quantity, double OrderPrice, ref string err, bool isConfirmed)
         {
             try
@@ -36,12 +49,12 @@ namespace DataControl.Utils
                     context.Orders.Add(ord);
                     context.SaveChanges();
 
-                    if (isConfirmed)
+                    if (isConfirmed) //if order confirmed - change the inventory accordingly
                     {
                         InventoryItemActions.ChangeInventoryItemQuantity(InventoryItemProductID, ref err, -Quantity);
                         err = "Order place, Inventory updated";
                     }
-                    else
+                    else // add this order to the user's shopping cart property
                     {
                         Constants.SessionUser.ShoppingCart.Add(ord);
                         err = "Order Added to Shopping cart, waiting for confirmation";
@@ -60,6 +73,9 @@ namespace DataControl.Utils
         }
 
 
+        // ** ** ** ** ** ** ** ** ** ** ** **
+        // ** Method overloads to get orders data
+        // ** ** ** ** ** ** ** ** ** ** ** **
         public static List<ComplexOrder> GetOrders()
         {
             if (Constants.SessionUser.IsAdmin == true)
@@ -96,7 +112,7 @@ namespace DataControl.Utils
             {
                 return null;
             }
-        }
+        }  // Get all orders in the system - Admin permission required
         public static List<ComplexOrder> GetOrders(int ProductID)
         {
             try
@@ -126,7 +142,7 @@ namespace DataControl.Utils
             {
                 return null;
             }
-        }
+        }  //Get all orders of a specific Product
         public static List<ComplexOrder> GetOrders(string Username)
         {
             try
@@ -157,7 +173,7 @@ namespace DataControl.Utils
             {
                 return null;
             }
-        }
+        } // Get all orders made by a specific user
         public static List<ComplexOrder> GetOrders(ProductTypes pt)
         {
             try
@@ -188,7 +204,7 @@ namespace DataControl.Utils
             {
                 return null;
             }
-        }
+        } /// Get all orders made for a specific product type
         public static List<ComplexOrder> GetOrders(DateTime OrderDate)
         {
             try
@@ -216,7 +232,7 @@ namespace DataControl.Utils
             {
                 return null;
             }
-        }
+        } // Get all orders made at a specific date
         public static List<ComplexOrder> GetOrders(DateTime StartOrderDate, DateTime EndOrderDate, int UserID)
         {
             try
@@ -246,8 +262,9 @@ namespace DataControl.Utils
             {
                 return null;
             }
-        }
+        } // Get all orders made by a specific user whithin dates range
 
+        // a method to reciect the shopping cart list, confirming the status and update the inventory
         public static bool ProcessShoppingCart(List<Order> lst)
         {
             string err = "";
@@ -277,6 +294,8 @@ namespace DataControl.Utils
             }
         }
 
+        //Upon login, this methos extract all unconfirmed order for the logged in user,
+        //and assign this list to the user's shopping cart property
         public static bool PopulateShoppingCart(User currentUser, ref string err)
         {
             try
@@ -297,6 +316,9 @@ namespace DataControl.Utils
             }
         }
 
+
+        // Delete order mthod. If order was confirmed - delete=return , therefore inventory is updated.
+        // if order not confirmed, only deleting from database/shopping cart.
         public static bool DeleteOrder(Order ord, bool IsReturnedAndRefund, ref string err)
         {
             try
@@ -330,6 +352,8 @@ namespace DataControl.Utils
             }
         }
 
+        // Delete order mthod. If order was confirmed - delete=return , therefore inventory is updated.
+        // if order not confirmed, only deleting from database/shopping cart.
         public static bool DeleteOrder(int OrderId, bool IsReturnedAndRefund, ref string err)
         {
             try
@@ -366,12 +390,6 @@ namespace DataControl.Utils
         }
     }
 
-    public class ComplexOrder
-    {
-        public Order cOrder { get; set; }
-        public Product cProduct { get; set; }
-        public InventoryItem cinventoryItem { get; set; }
-        public User cUser { get; set; }
-    }
+    
 }
 
